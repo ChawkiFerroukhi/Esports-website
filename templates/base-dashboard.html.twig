@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% block head %}
+        <head>
+            <meta charset="utf-8" />
+            <title>
+                Dashboard           
+            </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="description" content="" />
+            <meta name="author" content="" />
+            <link href="{{ asset('back-office/css/vendor.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('back-office/css/app.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('back-office/plugins/jvectormap-next/jquery-jvectormap.css') }}" rel="stylesheet" />
+            <link rel='stylesheet' id='plaxer-main-style-css' href="{{ asset('front-office/css/mainc8d8.css?ver=5.8.3') }}" media='all' />
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="{{ asset('front-office/js/scripts.js') }}" id='plaxer-scripts-js'></script>
+            <link href="{{ asset('back-office/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('back-office/plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('back-office/plugins/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css') }}" rel="stylesheet" />
+            
+            
+        {% endblock %}
+    </head>
+    {% block headerdefine %}
+        <body style="background-image: url({{ asset('front-office/img/bg1.jpg') }}); background-size: cover;">
+    {% endblock %}
+        <div id="app" class="app">
+            {% block navbar %}
+                <header class="site-header light-color">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="logo-block col-auto">
+                                <div class="site-logo">
+                                    <a href="index.html" data-magic-cursor="link">
+                                        <img class="light" src="{{ asset('front-office/img/logo-light.png') }}" alt="LevelUp">
+                                        <img class="dark" src="{{ asset('front-office/img/logo-dark.png') }}" alt="LevelUp">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="right col-auto">
+                                <nav class="navigation visible_menu">
+                                    <ul id="menu-navigation" class="menu">
+                                        <li id="menu-item-40" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-40">
+                                            <a href="{{ path('home') }}">
+                                                <span>
+                                                    Home
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li id="menu-item-53" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-53">
+                                            <a href="#">
+                                                <span>
+                                                    Blog                                                 
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li id="menu-item-56" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-56">
+                                            <a href="#">
+                                                <span>
+                                                    Events                                                 
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li id="menu-item-54" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-54">
+                                            <a href="#">
+                                                <span>
+                                                    Pages                                                 
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li id="menu-item-52" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-52">
+                                            <a href="#">
+                                                <span>
+                                                    Shop                                               
+                                                </span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51">
+                                                    <a href="#">
+                                                        <span>
+                                                            Product List                                                         
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
+                                                    <a href="#">
+                                                        <span>
+                                                            Cart                                                        
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li id="menu-item-47" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47">
+                                            <a href="#">
+                                                <span>
+                                                    Contact Us                                                
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li id="menu-item-52" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-52">
+                                            <a href="#">
+                                                <span>
+                                                    Our Community                                                 
+                                                </span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li id="menu-item-51" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51">
+                                                    <a href="#">
+                                                        <span>
+                                                            Teams                                                          
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
+                                                    <a href="#">
+                                                        <span>
+                                                            Video Games                                                         
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                {% if app.user %}
+                                    <div class="widget-user-list-item">
+                                        <a href="#" class="widget-user-list-link">
+                                            <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" style="height: 30px; width: 30px;" />
+                                        </a>
+                                    </div>
+                                    <a class="menu-item">
+                                        <span class="navigation white">
+                                            {{ app.user.username }}
+                                        </span>
+                                    </a>
+                                {% else %}
+                                    <a class="button-style2" href="login">
+                                        <span>
+                                            Login                                       
+                                        </span>
+                                    </a>
+                                    <a class="button-style2" href="register">
+                                        <span>
+                                            Register                                        
+                                        </span>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            {% endblock %}
+            <div id="sidebar" class="app-sidebar">
+                <div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
+                    <div class="menu">
+                        <div class="menu-header">
+                            Navigation                    
+                        </div>
+                        <div class="menu-item">
+                            <a href="index-2.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="bi bi-cpu"></i>
+                                </span>
+                                <span class="menu-text">
+                                    Users                                                              
+                                </span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a href="analytics.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="bi bi-bar-chart"></i>
+                                </span>
+                                <span class="menu-text">
+                                    Departments                                                             
+                                </span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a href="analytics.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="bi bi-bar-chart"></i>
+                                </span>
+                                <span class="menu-text">
+                                    Blogs                              
+                                </span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a href="analytics.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="bi bi-bar-chart"></i>
+                                </span>
+                                <span class="menu-text">
+                                    Posts                            
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
+            <div id="content" class="app-content">
+                {% block content %}{% endblock %}
+            </div>
+            <a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade">
+                <i class="fa fa-arrow-up"></i>
+            </a>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('back-office/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+
+        <script>
+            $('#datatableDefault').DataTable({
+              dom: "<'row mb-3'<'col-sm-4'l><'col-sm-8 text-end'<'d-flex justify-content-end'fB>>>t<'d-flex align-items-center'<'me-auto'i><'mb-0'p>>",
+              lengthMenu: [ 10, 20, 30, 40, 50],
+              responsive: true,
+              buttons: [ 
+                { extend: 'print', className: 'btn btn-secondary' },
+
+              ]
+            });
+          </script>
+          <link href="{{ asset('back-office/css/app.min.css') }}" rel="stylesheet" />
+        <script data-cfasync="false" src="{{ asset('back-office/js/email-decode.min.js') }}"></script>
+        <script src="{{ asset('back-office/js/vendor.min.js') }}" type="16da9a1ef25df41644eb38cf-text/javascript"></script>
+        <script src="{{ asset('back-office/js/app.min.js') }}" type="16da9a1ef25df41644eb38cf-text/javascript"></script>
+    </body>
+</html>

@@ -1,0 +1,154 @@
+{% extends "base-back.html.twig" %}
+
+{% block content %}
+
+    <div id="general" class="mb-5">
+        <h4>
+            <i class="far fa-user fa-fw text-theme"></i>
+            General
+        </h4>
+        <p>
+            View and update your general account information and settings.
+        </p>
+        <div class="card">
+            <div class="list-group list-group-flush">
+                <div class="list-group-item d-flex align-items-center">
+                    <div class="flex-1 text-break">
+                        <form name="user" method="post" class="form-group row m-3">
+                            <label for="user_email" class="col-sm-2 col-form-label">
+                                Email adress                               
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_email" name="user[email]" type="email" class="form-control" placeholder="{{ app.user.email }}">
+                            </div>
+                            <label for="user_username" class="col-sm-2 col-form-label mb-4">
+                                Username                                  
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_username" name="user[username]" type="text" class="form-control" placeholder="{{ app.user.username }}">
+                            </div>
+                            <label for="user_prenom" class="col-sm-2 col-form-label mb-4">
+                                Name                                             
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_prenom" name="user[prenom]" type="text" class="form-control" placeholder="{{ app.user.prenom }}">
+                            </div>
+                            <label for="user_nom" class="col-sm-2 col-form-label mb-4">
+                                Lastname                                
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_nom" name="user[nom]" type="text" class="form-control" placeholder="{{ app.user.nom }}">
+                            </div>
+                            <label for="user_password" class="col-sm-2 col-form-label mb-4">
+                                Password                                              
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_password" name="user[password]" type="password" class="form-control" placeholder="*****">
+                            </div>
+                            <label for="user_phone" class="col-sm-2 col-form-label mb-4">
+                                Phone number         
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_phone" name="user[phone]" type="number" class="form-control" placeholder="{{ app.user.phone }}">
+                            </div>
+                            <input type="hidden" id="user__token" name="user[_token]" value="Td7E-BYPLwadwqHySNuMCCuLP8BaxwAwnmXmAmIgAeg" />
+                            <div>
+                                <button class="btn btn-outline-default w-100px">
+                                    Save                                                
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                                <div id="languages" class="mb-5">
+                                    <h4>
+                                        <i class="fa fa-language fa-fw text-theme"></i>
+                                        Languages                                  
+                                    </h4>
+                                    <p>
+                                        Language font support and auto translation enabled                                  
+                                    </p>
+                                    <div class="card">
+                                        <div class="list-group list-group-flush">
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="flex-1 text-break">
+                                                    <div>
+                                                        Language enabled                                                 
+                                                    </div>
+                                                    <div class="text-white text-opacity-50">
+                                                        English (default), Chinese, France, Portuguese, Japense                                                             
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <a href="#modalEdit" data-bs-toggle="modal" class="btn btn-outline-default w-100px">
+                                                        Edit                                               
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="flex-1 text-break">
+                                                    <div>
+                                                        Auto translation                                                 
+                                                    </div>
+                                                    <div class="text-white text-opacity-50 d-flex align-items-center">
+                                                        <i class="fa fa-circle fs-8px fa-fw text-success me-1"></i>
+                                                        Enabled                                                  
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <a href="#modalEdit" data-bs-toggle="modal" class="btn btn-outline-default w-100px">
+                                                        Edit                                                 
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-arrow">
+                                            <div class="card-arrow-top-left"></div>
+                                            <div class="card-arrow-top-right"></div>
+                                            <div class="card-arrow-bottom-left"></div>
+                                            <div class="card-arrow-bottom-right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="resetSettings" class="mb-5">
+                                    <h4>
+                                        <i class="fa fa-redo fa-fw text-theme"></i>
+                                        Reset settings                                
+                                    </h4>
+                                    <p>
+                                        Reset all website setting to factory default setting.                                
+                                    </p>
+                                    <div class="card">
+                                        <div class="list-group list-group-flush">
+                                            <div class="list-group-item d-flex align-items-center">
+                                                <div class="flex-1 text-break">
+                                                    <div>
+                                                        Reset Settings                                                   
+                                                    </div>
+                                                    <div class="text-white text-opacity-50">
+                                                        This action will clear and reset all the current website setting.                                                  
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <a href="#" class="btn btn-outline-default w-100px">
+                                                        Reset                                        
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-arrow">
+                                            <div class="card-arrow-top-left"></div>
+                                            <div class="card-arrow-top-right"></div>
+                                            <div class="card-arrow-bottom-left"></div>
+                                            <div class="card-arrow-bottom-right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        {% endblock %}
+                        

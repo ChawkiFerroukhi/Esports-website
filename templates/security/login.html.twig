@@ -1,0 +1,52 @@
+{% extends "base-front.html.twig" %}
+{% block title %}Login{% endblock %}
+ {% block content %} 
+    <div class="header-space"></div>          <div class="page-top-block type-" style="">
+            <div class="container">
+                  <div class="heading-block">
+            <h1 class="h h3">My account</h1>
+          </div>
+              </div>
+    </div>
+        <main class="main-container">
+      <div class="container">
+        <div id="post-11" class="post-11 page type-page status-publish hentry">
+  <div class="content-area clearfix">
+    <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
+
+		<h4>Login</h4>
+		<form class="woocommerce-form woocommerce-form-login login" action={{ path('login') }}  method="post">
+        
+			
+			<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="username">Username&nbsp;<span class="required">*</span></label>
+				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="_username" id="username" autocomplete="username" value="" />			</p>
+			<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="password">Password&nbsp;<span class="required">*</span></label>
+				<input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="_password" id="password" autocomplete="current-password" />
+			</p>
+
+			
+			<p class="form-row">
+				<input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="7e05e5733f" /><input type="hidden" name="_wp_http_referer" value="/plaxer/my-account/" />        <button type="submit" class="woocommerce-Button button" name="login" value="Log in">Log in</button>
+        &nbsp;
+				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox inline">
+					<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span>Remember me</span>
+				</label>
+			</p>
+			<p class="woocommerce-LostPassword lost_password">
+				<a href="lost-password/index.html">Lost your password?</a>
+			</p>
+
+			
+		</form>
+
+
+</div>
+  </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base-front.html.twig" %}
+{% block title %}Register{% endblock %}
+ {% block content %} 
+    <div class="header-space"></div>          <div class="page-top-block type-" style="">
+            <div class="container">
+                  <div class="heading-block">
+            <h1 class="h h3">My account</h1>
+          </div>
+              </div>
+    </div>
+        <main class="main-container">
+      <div class="container">
+        <div id="post-11" class="post-11 page type-page status-publish hentry">
+  <div class="content-area clearfix">
+    <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
+
+		<h4>Register</h4>
+		<form class="woocommerce-form woocommerce-form-login login" name="user"  method="post">
+        
+			
+			<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="user_username">Username&nbsp;<span>*</span></label>
+				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="user[username]" id="user_username" />			
+            </p>
+            <p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="user_email">Email&nbsp;<span>*</span></label>
+				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="user[email]" id="user_email" />			
+            </p>
+            <p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="user_nom">Name&nbsp;<span>*</span></label>
+				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="user[nom]" id="user_nom" />			
+            </p>
+            <p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="user_prenom">Lastname&nbsp;<span>*</span></label>
+				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="user[prenom]" id="user_prenom" />			
+            </p>
+            <p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="user_phone">Phone&nbsp;<span>*</span></label>
+				<input type="number" class="woocommerce-Input woocommerce-Input--text input-text" name="user[phone]" id="user_phone" />			
+            </p>
+			<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="user_password">Password&nbsp;<span>*</span></label>
+				<input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="user[password]" id="user_password" autocomplete="current-password" />
+			</p>
+
+			
+			<p class="form-row">
+				<input type="hidden" id="user__token" name="user[_token]" value="{{ form._token.vars.value }}" /> 
+                <button type="submit" class="woocommerce-Button button" name="login" value="Log in">Register</button>
+        &nbsp;
+			</p>
+
+			
+		</form>
+
+
+</div>
+  </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+{% endblock %}

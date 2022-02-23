@@ -1,0 +1,1238 @@
+@font-face {
+  font-family: "base-icon";
+  src: url("base-icon.eot");
+  src: url("base-icond41d.eot?#iefix") format("eot"), url("base-icon.woff2") format("woff2"), url("base-icon.woff") format("woff"), url("base-icon.ttf") format("truetype"), url("../img/base-icon.svg#base-icon") format("svg");
+}
+
+[class*="base-icon-"],
+[class^="base-icon-"] {
+  font-family: "base-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  /* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+  text-decoration: none;
+  text-transform: none;
+}
+
+.base-icon-apple:before {
+  content: "\E001";
+}
+
+.base-icon-avatar-1:before {
+  content: "\E002";
+}
+
+.base-icon-avatar:before {
+  content: "\E003";
+}
+
+.base-icon-back:before {
+  content: "\E004";
+}
+
+.base-icon-cancel:before {
+  content: "\E005";
+}
+
+.base-icon-chat-1:before {
+  content: "\E006";
+}
+
+.base-icon-chat-2:before {
+  content: "\E007";
+}
+
+.base-icon-chat:before {
+  content: "\E008";
+}
+
+.base-icon-check-symbol:before {
+  content: "\E009";
+}
+
+.base-icon-close-button:before {
+  content: "\E00A";
+}
+
+.base-icon-confirm:before {
+  content: "\E00B";
+}
+
+.base-icon-copy:before {
+  content: "\E00C";
+}
+
+.base-icon-cross:before {
+  content: "\E00D";
+}
+
+.base-icon-down-arrow-2:before {
+  content: "\E00E";
+}
+
+.base-icon-down-arrow:before {
+  content: "\E00F";
+}
+
+.base-icon-download:before {
+  content: "\E010";
+}
+
+.base-icon-envato:before {
+  content: "\E011";
+}
+
+.base-icon-envelope:before {
+  content: "\E012";
+}
+
+.base-icon-facebook-logo:before {
+  content: "\E013";
+}
+
+.base-icon-garbage:before {
+  content: "\E014";
+}
+
+.base-icon-glasses:before {
+  content: "\E015";
+}
+
+.base-icon-google-play:before {
+  content: "\E016";
+}
+
+.base-icon-hand:before {
+  content: "\E017";
+}
+
+.base-icon-headphones:before {
+  content: "\E018";
+}
+
+.base-icon-heart:before {
+  content: "\E019";
+}
+
+.base-icon-house:before {
+  content: "\E01A";
+}
+
+.base-icon-icon:before {
+  content: "\E01B";
+}
+
+.base-icon-instagram-social-network-logo-of-photo-camera:before {
+  content: "\E01C";
+}
+
+.base-icon-joystick:before {
+  content: "\E01D";
+}
+
+.base-icon-left-arrow-2:before {
+  content: "\E01E";
+}
+
+.base-icon-left-arrow:before {
+  content: "\E01F";
+}
+
+.base-icon-like:before {
+  content: "\E020";
+}
+
+.base-icon-link:before {
+  content: "\E021";
+}
+
+.base-icon-logout:before {
+  content: "\E022";
+}
+
+.base-icon-magnifying-glass:before {
+  content: "\E023";
+}
+
+.base-icon-minus:before {
+  content: "\E024";
+}
+
+.base-icon-monitor:before {
+  content: "\E025";
+}
+
+.base-icon-musical-note:before {
+  content: "\E026";
+}
+
+.base-icon-next-1:before {
+  content: "\E027";
+}
+
+.base-icon-padlock:before {
+  content: "\E028";
+}
+
+.base-icon-paper-plane:before {
+  content: "\E029";
+}
+
+.base-icon-phone-call:before {
+  content: "\E02A";
+}
+
+.base-icon-photo-camera:before {
+  content: "\E02B";
+}
+
+.base-icon-pie-chart:before {
+  content: "\E02C";
+}
+
+.base-icon-piggy-bank:before {
+  content: "\E02D";
+}
+
+.base-icon-placeholder:before {
+  content: "\E02E";
+}
+
+.base-icon-play-button-2:before {
+  content: "\E02F";
+}
+
+.base-icon-play-button:before {
+  content: "\E030";
+}
+
+.base-icon-playstation:before {
+  content: "\E031";
+}
+
+.base-icon-poker:before {
+  content: "\E032";
+}
+
+.base-icon-printer:before {
+  content: "\E033";
+}
+
+.base-icon-reload:before {
+  content: "\E034";
+}
+
+.base-icon-reply:before {
+  content: "\E035";
+}
+
+.base-icon-right-arrow-2:before {
+  content: "\E036";
+}
+
+.base-icon-right-arrow-3:before {
+  content: "\E037";
+}
+
+.base-icon-right-arrow:before {
+  content: "\E038";
+}
+
+.base-icon-right-quote:before {
+  content: "\E039";
+}
+
+.base-icon-settings-1:before {
+  content: "\E03A";
+}
+
+.base-icon-settings:before {
+  content: "\E03B";
+}
+
+.base-icon-share:before {
+  content: "\E03C";
+}
+
+.base-icon-shopping-bag:before {
+  content: "\E03D";
+}
+
+.base-icon-shopping-cart:before {
+  content: "\E03E";
+}
+
+.base-icon-shuffle:before {
+  content: "\E03F";
+}
+
+.base-icon-speaker:before {
+  content: "\E040";
+}
+
+.base-icon-star:before {
+  content: "\E041";
+}
+
+.base-icon-tag:before {
+  content: "\E042";
+}
+
+.base-icon-team:before {
+  content: "\E043";
+}
+
+.base-icon-twitch:before {
+  content: "\E044";
+}
+
+.base-icon-up-arrow-1:before {
+  content: "\E045";
+}
+
+.base-icon-up-arrow:before {
+  content: "\E046";
+}
+
+.base-icon-upload-button:before {
+  content: "\E047";
+}
+
+.base-icon-upload:before {
+  content: "\E048";
+}
+
+.base-icon-vector:before {
+  content: "\E049";
+}
+
+.base-icon-youtube-logotype:before {
+  content: "\E04A";
+}
+
+.base-icon-youtube:before {
+  content: "\E04B";
+}
+
+@font-face {
+  font-family: "social-icon";
+  src: url("social-icon.eot");
+  src: url("social-icond41d.eot?#iefix") format("eot"), url("social-icon.woff2") format("woff2"), url("social-icon.woff") format("woff"), url("social-icon.ttf") format("truetype"), url("../img/social-icon.svg#social-icon") format("svg");
+}
+
+[class*="social-icon-"],
+[class^="social-icon-"] {
+  font-family: "social-icon";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  /* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+  text-decoration: none;
+  text-transform: none;
+}
+
+.social-icon-500px-logo-1:before {
+  content: "\E001";
+}
+
+.social-icon-500px-logo:before {
+  content: "\E002";
+}
+
+.social-icon-ads-of-the-world-logo:before {
+  content: "\E003";
+}
+
+.social-icon-ads-scuttlepad-logo:before {
+  content: "\E004";
+}
+
+.social-icon-arte10-logo:before {
+  content: "\E005";
+}
+
+.social-icon-ashley-madison-social-logo:before {
+  content: "\E006";
+}
+
+.social-icon-asmallworld-logo:before {
+  content: "\E007";
+}
+
+.social-icon-badoo-social-logotype:before {
+  content: "\E008";
+}
+
+.social-icon-baidu-logo:before {
+  content: "\E009";
+}
+
+.social-icon-bananity-social-logo:before {
+  content: "\E00A";
+}
+
+.social-icon-bandcamp-logo:before {
+  content: "\E00B";
+}
+
+.social-icon-bebo-social-logotype:before {
+  content: "\E00C";
+}
+
+.social-icon-behance-logo:before {
+  content: "\E00D";
+}
+
+.social-icon-bettercodes-logo:before {
+  content: "\E00E";
+}
+
+.social-icon-bisquits-logo:before {
+  content: "\E00F";
+}
+
+.social-icon-bitacoras-logo:before {
+  content: "\E010";
+}
+
+.social-icon-bitacoras-symbol:before {
+  content: "\E011";
+}
+
+.social-icon-blackplanet-logotype:before {
+  content: "\E012";
+}
+
+.social-icon-blogbus-logo:before {
+  content: "\E013";
+}
+
+.social-icon-blogger-logotype:before {
+  content: "\E014";
+}
+
+.social-icon-bloson-logo:before {
+  content: "\E015";
+}
+
+.social-icon-bola-a-logo:before {
+  content: "\E016";
+}
+
+.social-icon-buzznet-logo:before {
+  content: "\E017";
+}
+
+.social-icon-cafemom-logo:before {
+  content: "\E018";
+}
+
+.social-icon-care2-logo:before {
+  content: "\E019";
+}
+
+.social-icon-caringbridge-logo:before {
+  content: "\E01A";
+}
+
+.social-icon-cellufun-logo:before {
+  content: "\E01B";
+}
+
+.social-icon-citeulike-logo:before {
+  content: "\E01C";
+}
+
+.social-icon-classmates-logotype-symbol:before {
+  content: "\E01D";
+}
+
+.social-icon-club-dante-social-logotype:before {
+  content: "\E01E";
+}
+
+.social-icon-coderwall-logo:before {
+  content: "\E01F";
+}
+
+.social-icon-colourlovers-logo:before {
+  content: "\E020";
+}
+
+.social-icon-coroflot:before {
+  content: "\E021";
+}
+
+.social-icon-couchsurfing-logo:before {
+  content: "\E022";
+}
+
+.social-icon-creattica-logo:before {
+  content: "\E023";
+}
+
+.social-icon-cross-tv-logo:before {
+  content: "\E024";
+}
+
+.social-icon-dailymotion-logo:before {
+  content: "\E025";
+}
+
+.social-icon-deezer-logo:before {
+  content: "\E026";
+}
+
+.social-icon-delicious-logotype-of-squares:before {
+  content: "\E027";
+}
+
+.social-icon-desarrollo-web-or-web-development-logo:before {
+  content: "\E028";
+}
+
+.social-icon-designrelated-logotype:before {
+  content: "\E029";
+}
+
+.social-icon-deviantart-logo:before {
+  content: "\E02A";
+}
+
+.social-icon-digg-logo:before {
+  content: "\E02B";
+}
+
+.social-icon-digg-logotype:before {
+  content: "\E02C";
+}
+
+.social-icon-divoblogger-logo:before {
+  content: "\E02D";
+}
+
+.social-icon-doodle-ly-logotype:before {
+  content: "\E02E";
+}
+
+.social-icon-douban-logo:before {
+  content: "\E02F";
+}
+
+.social-icon-dribbble-logo:before {
+  content: "\E030";
+}
+
+.social-icon-ebay-logo:before {
+  content: "\E031";
+}
+
+.social-icon-etsy-logo:before {
+  content: "\E032";
+}
+
+.social-icon-everloop-logo:before {
+  content: "\E033";
+}
+
+.social-icon-ex-fm-logo:before {
+  content: "\E034";
+}
+
+.social-icon-eyeem-logo:before {
+  content: "\E035";
+}
+
+.social-icon-facebook-logo:before {
+  content: "\E036";
+}
+
+.social-icon-fanlala-logo:before {
+  content: "\E037";
+}
+
+.social-icon-flickr-logo:before {
+  content: "\E038";
+}
+
+.social-icon-flipkart-logo:before {
+  content: "\E039";
+}
+
+.social-icon-flixster-logo:before {
+  content: "\E03A";
+}
+
+.social-icon-fod-social-logo:before {
+  content: "\E03B";
+}
+
+.social-icon-fontli-logo:before {
+  content: "\E03C";
+}
+
+.social-icon-fotki-logo:before {
+  content: "\E03D";
+}
+
+.social-icon-fotolog-social-network-logo:before {
+  content: "\E03E";
+}
+
+.social-icon-foursquare-logo:before {
+  content: "\E03F";
+}
+
+.social-icon-friendster-logo:before {
+  content: "\E040";
+}
+
+.social-icon-funny-or-die-logo:before {
+  content: "\E041";
+}
+
+.social-icon-gaiaonline-logo:before {
+  content: "\E042";
+}
+
+.social-icon-gather-logo:before {
+  content: "\E043";
+}
+
+.social-icon-geni-social-logo:before {
+  content: "\E044";
+}
+
+.social-icon-geonick-logo:before {
+  content: "\E045";
+}
+
+.social-icon-glipho-logo:before {
+  content: "\E046";
+}
+
+.social-icon-glogster-logo:before {
+  content: "\E047";
+}
+
+.social-icon-google-plus-social-logotype:before {
+  content: "\E048";
+}
+
+.social-icon-grooveshark-logotype:before {
+  content: "\E049";
+}
+
+.social-icon-grou-ps-logo:before {
+  content: "\E04A";
+}
+
+.social-icon-habbo-logotype-1:before {
+  content: "\E04B";
+}
+
+.social-icon-habbo-logotype:before {
+  content: "\E04C";
+}
+
+.social-icon-heello-logo:before {
+  content: "\E04D";
+}
+
+.social-icon-hexun-logo:before {
+  content: "\E04E";
+}
+
+.social-icon-hi5-social-logo:before {
+  content: "\E04F";
+}
+
+.social-icon-hipstamatic-logo:before {
+  content: "\E050";
+}
+
+.social-icon-hubbub-logo:before {
+  content: "\E051";
+}
+
+.social-icon-inside-the-hotel-logotype:before {
+  content: "\E052";
+}
+
+.social-icon-instagram-social-network-logo-of-photo-camera:before {
+  content: "\E053";
+}
+
+.social-icon-intellectconnect-logo:before {
+  content: "\E054";
+}
+
+.social-icon-iqyi-logo:before {
+  content: "\E055";
+}
+
+.social-icon-itsmy-logo-1:before {
+  content: "\E056";
+}
+
+.social-icon-itsmy-logo:before {
+  content: "\E057";
+}
+
+.social-icon-jiepang-logotype:before {
+  content: "\E058";
+}
+
+.social-icon-jux-logo:before {
+  content: "\E059";
+}
+
+.social-icon-kaixin101-logotype-of-a-smiling-star:before {
+  content: "\E05A";
+}
+
+.social-icon-kiwibox-logo:before {
+  content: "\E05B";
+}
+
+.social-icon-ku6-logo:before {
+  content: "\E05C";
+}
+
+.social-icon-last-fm-logo:before {
+  content: "\E05D";
+}
+
+.social-icon-linkedin-logo:before {
+  content: "\E05E";
+}
+
+.social-icon-literatura-nova-logo:before {
+  content: "\E05F";
+}
+
+.social-icon-meetic-logo:before {
+  content: "\E060";
+}
+
+.social-icon-meetme-logo:before {
+  content: "\E061";
+}
+
+.social-icon-meetup-logo:before {
+  content: "\E062";
+}
+
+.social-icon-meetyourfriends-logotype:before {
+  content: "\E063";
+}
+
+.social-icon-meneame-social-network-logo-of-an-elephant:before {
+  content: "\E064";
+}
+
+.social-icon-metacafe-logo:before {
+  content: "\E065";
+}
+
+.social-icon-mixi-logo:before {
+  content: "\E066";
+}
+
+.social-icon-mocospace-logo:before {
+  content: "\E067";
+}
+
+.social-icon-my-heritage-logo:before {
+  content: "\E068";
+}
+
+.social-icon-my-life-logo:before {
+  content: "\E069";
+}
+
+.social-icon-my-life-social-logo:before {
+  content: "\E06A";
+}
+
+.social-icon-my-space-logo:before {
+  content: "\E06B";
+}
+
+.social-icon-myfolio-logo:before {
+  content: "\E06C";
+}
+
+.social-icon-myspace-logotype:before {
+  content: "\E06D";
+}
+
+.social-icon-ning-social-logo:before {
+  content: "\E06E";
+}
+
+.social-icon-nk-social-symbol:before {
+  content: "\E06F";
+}
+
+.social-icon-notasweb-logo:before {
+  content: "\E070";
+}
+
+.social-icon-odnoklassniki-logo:before {
+  content: "\E071";
+}
+
+.social-icon-on-social-logo:before {
+  content: "\E072";
+}
+
+.social-icon-orkut-logo:before {
+  content: "\E073";
+}
+
+.social-icon-p1-social-logotype:before {
+  content: "\E074";
+}
+
+.social-icon-panamo-logo:before {
+  content: "\E075";
+}
+
+.social-icon-path-social-logotype:before {
+  content: "\E076";
+}
+
+.social-icon-pengyu-logotype:before {
+  content: "\E077";
+}
+
+.social-icon-pheed-logo:before {
+  content: "\E078";
+}
+
+.social-icon-pictify-logo:before {
+  content: "\E079";
+}
+
+.social-icon-pinspire-logo-symbol:before {
+  content: "\E07A";
+}
+
+.social-icon-pinstagram-logo:before {
+  content: "\E07B";
+}
+
+.social-icon-pinterest-social-logo:before {
+  content: "\E07C";
+}
+
+.social-icon-podio-social-logo:before {
+  content: "\E07D";
+}
+
+.social-icon-qq-social-logo-of-a-penguin:before {
+  content: "\E07E";
+}
+
+.social-icon-questionity-logotype:before {
+  content: "\E07F";
+}
+
+.social-icon-qzone-logo:before {
+  content: "\E080";
+}
+
+.social-icon-ravelry-logo-1:before {
+  content: "\E081";
+}
+
+.social-icon-ravelry-logo:before {
+  content: "\E082";
+}
+
+.social-icon-redalyc-logo:before {
+  content: "\E083";
+}
+
+.social-icon-reddit-logo:before {
+  content: "\E084";
+}
+
+.social-icon-reddit-social-logo-character:before {
+  content: "\E085";
+}
+
+.social-icon-rendezvous-logo:before {
+  content: "\E086";
+}
+
+.social-icon-renren-logo:before {
+  content: "\E087";
+}
+
+.social-icon-researchgate-logo:before {
+  content: "\E088";
+}
+
+.social-icon-reverbnation-logo:before {
+  content: "\E089";
+}
+
+.social-icon-ryze-logo:before {
+  content: "\E08A";
+}
+
+.social-icon-ryze-social-logo:before {
+  content: "\E08B";
+}
+
+.social-icon-scoop-it-logo-1:before {
+  content: "\E08C";
+}
+
+.social-icon-scoop-it-logo:before {
+  content: "\E08D";
+}
+
+.social-icon-scribd-logo:before {
+  content: "\E08E";
+}
+
+.social-icon-sina-logo:before {
+  content: "\E08F";
+}
+
+.social-icon-sina-social-logo-of-an-eye:before {
+  content: "\E090";
+}
+
+.social-icon-skyrock-logo:before {
+  content: "\E091";
+}
+
+.social-icon-slideshare-logo:before {
+  content: "\E092";
+}
+
+.social-icon-social-logo:before {
+  content: "\E093";
+}
+
+.social-icon-socialcam-logo:before {
+  content: "\E094";
+}
+
+.social-icon-sonico-logo:before {
+  content: "\E095";
+}
+
+.social-icon-sonico-social-logo:before {
+  content: "\E096";
+}
+
+.social-icon-soundcloud-logo:before {
+  content: "\E097";
+}
+
+.social-icon-spotbros-logo:before {
+  content: "\E098";
+}
+
+.social-icon-spotify-logo:before {
+  content: "\E099";
+}
+
+.social-icon-studivz-social-logo:before {
+  content: "\E09A";
+}
+
+.social-icon-stumbleupon-logo:before {
+  content: "\E09B";
+}
+
+.social-icon-symbaloo-logotype:before {
+  content: "\E09C";
+}
+
+.social-icon-tadaa-logotype:before {
+  content: "\E09D";
+}
+
+.social-icon-tagged-logotype:before {
+  content: "\E09E";
+}
+
+.social-icon-tagworld-logotype-symbol:before {
+  content: "\E09F";
+}
+
+.social-icon-taringa-logo:before {
+  content: "\E0A0";
+}
+
+.social-icon-telly-social-symbol:before {
+  content: "\E0A1";
+}
+
+.social-icon-tencent-weibo-logo:before {
+  content: "\E0A2";
+}
+
+.social-icon-threadless-logotype:before {
+  content: "\E0A3";
+}
+
+.social-icon-tianji-logotype-symbol:before {
+  content: "\E0A4";
+}
+
+.social-icon-travbuddy-social-logotype:before {
+  content: "\E0A5";
+}
+
+.social-icon-tribe-social-logotype:before {
+  content: "\E0A6";
+}
+
+.social-icon-tripadvisor-logotype:before {
+  content: "\E0A7";
+}
+
+.social-icon-tu-tv-logo:before {
+  content: "\E0A8";
+}
+
+.social-icon-tudou-logo:before {
+  content: "\E0A9";
+}
+
+.social-icon-tuenti-social-logo:before {
+  content: "\E0AA";
+}
+
+.social-icon-tumblr-logo:before {
+  content: "\E0AB";
+}
+
+.social-icon-tv-tag-logotype-symbol:before {
+  content: "\E0AC";
+}
+
+.social-icon-twitpic-symbol:before {
+  content: "\E0AD";
+}
+
+.social-icon-twitter-logo:before {
+  content: "\E0AE";
+}
+
+.social-icon-twitter-social-logotype:before {
+  content: "\E0AF";
+}
+
+.social-icon-twoo-logo:before {
+  content: "\E0B0";
+}
+
+.social-icon-typophile-logo:before {
+  content: "\E0B1";
+}
+
+.social-icon-ushi-logo:before {
+  content: "\E0B2";
+}
+
+.social-icon-vampirefreaks-logo:before {
+  content: "\E0B3";
+}
+
+.social-icon-viadeo-logo:before {
+  content: "\E0B4";
+}
+
+.social-icon-viddy-logotype:before {
+  content: "\E0B5";
+}
+
+.social-icon-vimeo-social-logo:before {
+  content: "\E0B6";
+}
+
+.social-icon-vine-logo-1:before {
+  content: "\E0B7";
+}
+
+.social-icon-vine-logo:before {
+  content: "\E0B8";
+}
+
+.social-icon-vk-social-logotype:before {
+  content: "\E0B9";
+}
+
+.social-icon-wayn-social-network-logo:before {
+  content: "\E0BA";
+}
+
+.social-icon-weeworld-logo:before {
+  content: "\E0BB";
+}
+
+.social-icon-weheartit-logo:before {
+  content: "\E0BC";
+}
+
+.social-icon-weibo-social-logo:before {
+  content: "\E0BD";
+}
+
+.social-icon-widbook-logo:before {
+  content: "\E0BE";
+}
+
+.social-icon-wikiloc-logo:before {
+  content: "\E0BF";
+}
+
+.social-icon-wikipedia-logo:before {
+  content: "\E0C0";
+}
+
+.social-icon-wikipedia-logotype-of-earth-puzzle:before {
+  content: "\E0C1";
+}
+
+.social-icon-wordpress-logo:before {
+  content: "\E0C2";
+}
+
+.social-icon-xanga-logo:before {
+  content: "\E0C3";
+}
+
+.social-icon-xanga-symbol:before {
+  content: "\E0C4";
+}
+
+.social-icon-xiami-social-symbol:before {
+  content: "\E0C5";
+}
+
+.social-icon-xing-social-logotype:before {
+  content: "\E0C6";
+}
+
+.social-icon-yelp-logo:before {
+  content: "\E0C7";
+}
+
+.social-icon-youku-logo:before {
+  content: "\E0C8";
+}
+
+.social-icon-yoursphere-logo:before {
+  content: "\E0C9";
+}
+
+.social-icon-youtube-logotype:before {
+  content: "\E0CA";
+}
+
+.social-icon-youtube-symbol:before {
+  content: "\E0CB";
+}
+
+.social-icon-yupoo-logo:before {
+  content: "\E0CC";
+}
+
+.social-icon-zorpia-logo:before {
+  content: "\E0CD";
+}
+
+@font-face {
+  font-family: 'game-logo';
+  src: url("game-logo46bc.eot?h43e0h");
+  src: url("game-logo46bc.eot?h43e0h#iefix") format("embedded-opentype"), url("game-logo46bc.ttf?h43e0h") format("truetype"), url("game-logo46bc.woff?h43e0h") format("woff"), url("../img/game-logo46bc.svg?h43e0h#game-logo") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="game-logo-"], [class*=" game-logo-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'game-logo' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.game-logo-overwatch:before {
+  content: "\e900";
+}
+
+.game-logo-battlefield:before {
+  content: "\e901";
+}
+
+.game-logo-battlefield-1:before {
+  content: "\e902";
+}
+
+.game-logo-cs-go:before {
+  content: "\e903";
+}
+
+.game-logo-dota-2:before {
+  content: "\e904";
+}
+
+.game-logo-fifa:before {
+  content: "\e905";
+}
+
+.game-logo-fortnite:before {
+  content: "\e906";
+}
+
+.game-logo-halo:before {
+  content: "\e907";
+}
+
+.game-logo-hearthstone:before {
+  content: "\e908";
+}
+
+.game-logo-pubg:before {
+  content: "\e90a";
+}
+
+.game-logo-the-division:before {
+  content: "\e90b";
+}
+
+.game-logo-world-of-tanks:before {
+  content: "\e90c";
+}
+
+.game-logo-world-of-warcraft:before {
+  content: "\e90d";
+}
+
+.game-logo-world-of-warships:before {
+  content: "\e90e";
+}
