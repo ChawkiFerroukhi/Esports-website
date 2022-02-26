@@ -1,4 +1,7 @@
 {
+    "behat/transliterator": {
+        "version": "v1.3.0"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -85,8 +88,14 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
+    "gedmo/doctrine-extensions": {
+        "version": "v3.5.0"
+    },
     "laminas/laminas-code": {
         "version": "4.5.1"
+    },
+    "madmis/activity-log-bundle": {
+        "version": "0.2.3"
     },
     "monolog/monolog": {
         "version": "1.26.1"
@@ -214,6 +223,18 @@
         },
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
+        ]
+    },
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.2",
+            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
+        },
+        "files": [
+            "./config/packages/stof_doctrine_extensions.yaml"
         ]
     },
     "symfony/asset": {

@@ -144,14 +144,14 @@
                         <div class="dropdown-menu" style="background-color: #1A1A1A; right: 0px;">
                             <a class="dropdown-item white" href="{{ path('new_user_show', {'id': app.user.id}) }}">Profile</span>
                             <a class="dropdown-item white" href="{{ path('new_user_edit', {'id': app.user.id}) }}">Settings</a>
-                            <a class="dropdown-item white" href="dashboard">Dashboard</a>
+                            <a class="dropdown-item white" href="{{ path('new_user_index')}}">Dashboard</a>
                             <div class="dropdown-divider white"></div>
                             <a class="dropdown-item white" href="logout">Logout</a>
                         </div>
                     </div>
                     {% else %}
-                    <a class = "button-style2" href="login"><span>Login</span></a>
-                    <a class = "button-style2" href="register"><span>Register</span></a>
+                    <a class = "button-style2" href="{{ path('login')}}"><span>Login</span></a>
+                    <a class = "button-style2" href="{{ path('new_user_new')}}"><span>Register</span></a>
                     {% endif %}
                     <div class="header-search-button"><i class="base-icon-magnifying-glass"></i></div>
                     <div class="header-minicart woocommerce header-minicart-plaxer">

@@ -1,62 +1,186 @@
 {% extends "base-dashboard.html.twig" %}
 {% block content %}
-
-        <div class="card">
-            <div class="card-body">
-                <table id="datatableDefault" class="table text-nowrap w-100">
-                    <thead>
+    <div class="card">
+        <div class="card-body">
+            <table id="datatableDefault" class="table text-nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Name
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Lastname
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Username
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Email
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Department
+                            
+                                                        
+                        </th>
+                        <th>
+                            Join Date  
+                            
+                                                        
+                        </th>
+                        <th>
+                            Actions  
+                                                                                  
+                                                        
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
                         <tr>
-                            <th>
-                                id
-                                                            
-                            </th>
-                            <th>
-                                Name
-                                                            
-                            </th>
-                            <th>
-                                Lastname
-                                                            
-                            </th>
-                            <th>
-                                Username
-                                                            
-                            </th>
-                            <th>
-                                Email
-                                                            
-                            </th>
-                            <th>
-                                Department
-                                                            
-                            </th>
-                            <th>
-                                Join Date
-                                                            
-                            </th>
+                            <td>
+                                {{ user.id }}
+                            </td>
+                            <td>
+                                {{ user.nom }}
+                            </td>
+                            <td>
+                                {{ user.prenom }}
+                            </td>
+                            <td>
+                                {{ user.username }}
+                            </td>
+                            <td>
+                                {{ user.email }}
+                            </td>
+                            <td>
+                                {{ user.departement }}
+                            </td>
+                            <td>
+                                {{ user.dateJoin ? user.dateJoin|date('Y-m-d H:i:s') : '' }}
+                            </td>
+                            <td>
+                                <a href="{{ path('edit_user_admin', {'id': user.id}) }}" class="bi bi-pencil white"></a>
+                                <a data-id="{{ user.id }}" class="bi bi-trash white test" data-bs-toggle="modal" data-target="#staticBackdrop1" data-bs-target="#staticBackdrop1">
+                            </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {% for user in users %}
-                        <tr>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.nom }}</td>
-                            <td>{{ user.prenom }}</td>
-                            <td>{{ user.username }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.departement }}</td>
-                            <td>{{ user.dateJoin ? user.dateJoin|date('Y-m-d H:i:s') : '' }}</td>
-                        </tr>
+                        
                     {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-arrow">
-                <div class="card-arrow-top-left"></div>
-                <div class="card-arrow-top-right"></div>
-                <div class="card-arrow-bottom-left"></div>
-                <div class="card-arrow-bottom-right"></div>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>
+        </div>
+    </div>
+    <a href="{{ path('new_user_admin') }}">
+        <button class="btn btn-outline-theme mt-4">
+            <span>
+                Add user
+            </span>
+        </button>
+    </a>
+    <button type="button" class="btn btn-outline-theme mt-4" style="float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add user
+    </button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        Add user
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form action="{{ path('new_user_admin') }}" method="post">
+                    <label for="user_email" class="col-sm-2 col-form-label">
+                        Email                               
+                    </label>
+                    <div class="col-sm-10 mb-4">
+                    <input id="user_email" name="user[email]" type="email" class="form-control">
+                    </div>
+                            <label for="user_username" class="col-sm-2 col-form-label">
+                                Username                                  
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_username" name="user[username]" type="text" class="form-control">
+                            </div>
+                            <label for="user_prenom" class="col-sm-2 col-form-label">
+                                Name                                             
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_prenom" name="user[prenom]" type="text" class="form-control">
+                            </div>
+                            <label for="user_nom" class="col-sm-2 col-form-label">
+                                Lastname                                
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_nom" name="user[nom]" type="text" class="form-control">
+                            </div>
+                            <label for="user_password" class="col-sm-2 col-form-label">
+                                Password                                              
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_password" name="user[password]" type="password" class="form-control">
+                            </div>
+                            <label for="user_phone" class="col-sm-2 col-form-label">
+                                Phone        
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="user_phone" name="user[phone]" type="number" class="form-control">
+                            </div>
+                            <label for="user_Departement" class="col-sm-2 col-form-label">
+                                Department        
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <select id="user_Departement" name="user[Departement]" class="form-select">
+                                {% for departement in departements %}
+                                    <option value ="{{departement.id}}"> {{departement.nom}} </option>
+                                {% endfor %}
+                                </select>
+                            </div>
+                            <p class="form-row">
+                            <input type="hidden" id="user__token" name="user[_token]" value="{{ form._token.vars.value }}"> 
+                            </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    add
+                                </button>
+                            </div>
+                </form>
             </div>
         </div>
+    </div>
+    {{ include('dashboard/_modal.html.twig') }}
+
+
+    <script>
+        $('.test').on('click', function(){
+            console.log("working");
+        var thisId = $(this).attr('data-id');
+        $('#staticBackdrop1').load(Routing.generate('edit_user_admin', { id : thisId }));
+});
+    </script>
     
 {% endblock %}

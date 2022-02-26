@@ -15,7 +15,7 @@
             <link href="{{ asset('back-office/css/app.min.css') }}" rel="stylesheet" />
             <link href="{{ asset('back-office/plugins/jvectormap-next/jquery-jvectormap.css') }}" rel="stylesheet" />
             <link rel='stylesheet' id='plaxer-main-style-css' href="{{ asset('front-office/css/mainc8d8.css?ver=5.8.3') }}" media='all' />
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script src="{{ asset('front-office/js/scripts.js') }}" id='plaxer-scripts-js'></script>
         {% endblock %}
     </head>
@@ -402,6 +402,45 @@
         <script data-cfasync="false" src="{{ asset('back-office/js/email-decode.min.js') }}"></script>
         <script src="{{ asset('back-office/js/vendor.min.js') }}" type="16da9a1ef25df41644eb38cf-text/javascript"></script>
         <script src="{{ asset('back-office/js/app.min.js') }}" type="16da9a1ef25df41644eb38cf-text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript">
+                        var request;
+                        $("#user").submit(function(event){
+                        
+                            event.preventDefault();
+                        
+                            // Abort any pending request
+                            if (request) {
+                                request.abort();
+                            }
+                            var $form = $(this);
+                            var $inputs = $form.find("input, select, button, textarea");
+                        
+                            var serializedData = $form.serialize();
+                            $inputs.prop("disabled", true);
+                            request = $.ajax({
+                                url: "{{ path('new_user_edit', {'id': user.id}) }}",
+                                type: "post",
+                                data: serializedData
+                            });
+                    
+                            request.done(function (response, textStatus, jqXHR){
+                                
+                                console.log("Hooray, it worked!");
+                            });
+                            request.fail(function (jqXHR, textStatus, errorThrown){
+                                console.error(
+                                    "The following error occurred: "+
+                                    textStatus, errorThrown
+                                );
+                            });
+                        
+                            request.always(function () {
+                                $inputs.prop("disabled", false);
+                            });
+                        
+                        });
+                        </script>
     </body>
 <!-- Mirrored from seantheme.com/hud/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Feb 2022 22:43:13 GMT -->
 </html>

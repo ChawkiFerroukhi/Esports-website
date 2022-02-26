@@ -1,0 +1,11 @@
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+    <h1>Edit User</h1>
+
+    {{ include('new_user/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('new_user_index') }}">back to list</a>
+
+    {{ include('new_user/_delete_form.html.twig') }}
+{% endblock %}

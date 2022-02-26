@@ -7,9 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+    * fields={"email"},
+  * message="This email already exists try another name."
+  *)
  */
 class User implements UserInterface , \Serializable
 {
@@ -31,7 +36,7 @@ class User implements UserInterface , \Serializable
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255, unique = true)
+     * @ORM\Column(type="string", length=255)
      */
     private $email;
 
@@ -155,6 +160,11 @@ class User implements UserInterface , \Serializable
     public function getDepartement(): ?Departement
     {
         return $this->departement;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getDepartement();
     }
 
     public function setDepartement(?Departement $departement): self
@@ -302,4 +312,6 @@ class User implements UserInterface , \Serializable
             $this->password
         ) = unserialize($string, ['allowed_classes' =>false]);
     }
+
+    
 }
