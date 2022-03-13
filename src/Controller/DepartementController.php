@@ -21,8 +21,11 @@ class DepartementController extends AbstractController
      */
     public function index(DepartementRepository $departementRepository): Response
     {
+        $departement = new Departement();
+        $form = $this->createForm(DepartementType::class, $departement);
         return $this->render('dashboard/department.html.twig', [
             'departements' => $departementRepository->findAll(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -79,7 +82,7 @@ class DepartementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="departement_delete", methods={"POST"}, requirements={"id":"\d+"})
+     * @Route("/department/delete/{id}", name="departement_delete", methods={"POST"}, requirements={"id":"\d+"})
      */
     public function delete(Request $request, Departement $departement, EntityManagerInterface $entityManager): Response
     {

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Equipe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Doctrine_Query;
 
 /**
  * @method Equipe|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,43 @@ class EquipeRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Equipe::class);
+    }
+
+
+
+
+    public function findCompetitionbyname($name)
+    {
+        return $this->createQueryBuilder('equipe')
+
+
+            ->where('equipe.nom LIKE :nom')
+
+            ->setParameter('nom','%'.$name.'%')
+
+            ->getQuery()
+            ->getResult();
+
+
+
+
+    }
+
+
+    function  kbir()
+    {
+        $conn = $this->getEntityManager()
+            ->getConnection();
+        $sql='
+
+
+select  equipe.id,equipe.nom,
+      from 
+    equipe  order by equipe.nom ASC 
+  ';
+        $stmt = $conn->prepare($sql);
+        return $stmt->executeQuery()->fetchAllAssociative();
+
     }
 
     // /**

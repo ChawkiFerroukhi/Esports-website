@@ -1,0 +1,28 @@
+{% block title %}ProfilePosts{% endblock %}
+
+{% block body %}
+    <h1>ProfilePosts</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ profile_post.id }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ profile_post.content }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ profile_post.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('profile_posts_index') }}">back to list</a>
+
+    <a href="{{ path('profile_posts_edit', {'id': profile_post.id}) }}">edit</a>
+
+    {{ include('profile_posts/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Faq{% endblock %}
+
+{% block body %}
+    <h1>Create new Faq</h1>
+
+    {{ include('faq/_form.html.twig') }}
+
+    <a href="{{ path('app_faq_index') }}">back to list</a>
+{% endblock %}

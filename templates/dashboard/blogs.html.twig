@@ -1,0 +1,132 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <table id="datatableDefault" class="table text-nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Image
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Title
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Content
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            likes
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Post date
+                            
+                                                        
+                        </th>
+                        <th>
+                            Actions  
+                                                                                  
+                                                        
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for blog in blogs %}
+                        <tr>
+                            <td>
+                                {{ blog.id }}
+                            </td>
+                            <td>
+                                <img alt="" src="{{ asset('front-office/img/') }}{{ blog.image }}" style="height: 30px;" />
+                            </td>
+                            <td>
+                                {{ blog.titre }}
+                            </td>
+                            <td>
+                                {{ blog.contenu }}
+                            </td>
+                            <td>
+                                {{ blog.likes | length }}
+                            </td>
+                            <td>
+                                {{ blog.postDate ? blog.postDate|date('Y-m-d H:i:s') : '' }}
+                            </td>
+                            <td>
+                                <a href="{{ path('blog_edit', {'id': blog.id}) }}" class="bi bi-pencil white"></a>
+                                {{ include('blog/_delete_form.html.twig') }}
+                            </a>
+                            </td>
+                        </tr>
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-theme mt-4" style="float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add blog
+    </button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        Add blog
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form action="{{ path('blog_new') }}" method="post">
+                    <label for="blog_titre" class="col-sm-2 col-form-label">
+                        Title                               
+                    </label>
+                    <div class="col-sm-10 mb-4">
+                    <input id="blog_titre" name="blog[titre]" class="form-control">
+                    </div>
+                            <label for="blog_contenu" class="col-sm-2 col-form-label">
+                                Content                                  
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                            <textarea id="blog_contenu" name="blog[contenu]" rows="10" class="form-control"></textarea>
+                            </div>
+                            <label for="blog_image" class="col-sm-2 col-form-label">
+                                image                                             
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="blog_image" name="blog[image]" type="file" class="form-control">
+                            </div>
+                            <p class="form-row">
+                            <input type="hidden" id="blog__token" name="blog[_token]" value="{{ form._token.vars.value }}"> 
+                            </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    add
+                                </button>
+                            </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

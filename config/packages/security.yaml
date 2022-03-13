@@ -3,34 +3,38 @@ security:
         App\Entity\User:
             algorithm: auto
     providers:
-        my_provider:
-            entity: 
+        users:
+            entity:
                 class: App\Entity\User
-                property: username
                 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            access_denied_url: /home
             anonymous: lazy
-
             form_login:
                 login_path: login
                 check_path: login
                 default_target_path: home
-                provider: my_provider
             guard:
+                entry_point: form_login
                 authenticators:
-                    - App\Security\LoginFormAuthenticator
+                    - App\Security\GoogleAuthenticator 
+                    - App\Security\MyFacebookAuthenticator
+                   
             logout:
-                path: app_logout
+                path: logout
                 # where to redirect after logout
-                target: home
+                target: login
+            user_checker: App\Security\UserChecker
+            remember_me :
+                secret : '%kernel.secret%'
+                lifetime : 259200
+                path : /
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         #- { path: ^/dashboard, roles: ROLE_ADMIN }
-         - { path: ^/profile, roles: ROLE_USER }
-         - { path: ^/edit, roles: ROLE_USER }
+         - { path: ^/dashboard/*, roles: ROLE_ADMIN }

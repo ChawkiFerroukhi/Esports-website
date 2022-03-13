@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Evenement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,6 +21,29 @@ class EvenementRepository extends ServiceEntityRepository
         parent::__construct($registry, Evenement::class);
     }
 
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function add(Evenement $entity, bool $flush = true): void
+    {
+        $this->_em->persist($entity);
+        if ($flush) {
+            $this->_em->flush();
+        }
+    }
+
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function remove(Evenement $entity, bool $flush = true): void
+    {
+        $this->_em->remove($entity);
+        if ($flush) {
+            $this->_em->flush();
+        }
+    }
     // /**
     //  * @return Evenement[] Returns an array of Evenement objects
     //  */
@@ -47,4 +72,15 @@ class EvenementRepository extends ServiceEntityRepository
         ;
     }
     */
+    
+    /**
+     * @return Evenement[]
+     */
+    public function findObject($value)
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->orderBy('e.date', 'ASC')
+            ;
+        return $qb->getQuery()->execute();
+    }
 }

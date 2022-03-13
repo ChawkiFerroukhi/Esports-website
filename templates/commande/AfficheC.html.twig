@@ -1,0 +1,65 @@
+{% extends "base-dashboard.html.twig" %}
+
+{% block content %}
+
+            <div class="card mb-3">
+
+                <div class="card-body">
+
+                    <div class="d-flex fw-bold small mb-3">
+                        <span class="flex-grow-1">Check Orders</span>
+                        <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+                    </div>
+
+
+
+                                <table id="datatableDefault" class="table table-hover text-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th class="pt-0 pb-2">#</th>
+                                        <th class="pt-0 pb-2">Date</th>
+                                        <th class="pt-0 pb-2">Quantite</th>
+                                        <th class="pt-0 pb-2">Prix Total</th>
+                                        <th class="pt-0 pb-2">Liste Produits</th>
+                                        <th class="pt-0 pb-2">Ordered By</th>
+                                        <th class="pt-0 pb-2">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    {% if commande %}
+                                        <tbody>
+                                        {% for cmd in commande %}
+                                            <tr>
+                                                <td class="w-10px align-middle">{{ cmd.id }}</td>
+                                                <td class="align-middle">{{ cmd.date|date('d-m-Y') }}</td>
+                                                <td class="align-middle">{{ cmd.quantite }}</td>
+                                                <td class="align-middle">{{ cmd.prixtotal }}</td>
+                                                <td class="align-middle">{% for ligne in cmd.ligneCommandes %}{{ ligne.produit.nom }} ({{ ligne.quantite }}) | {% endfor %}</td>
+                                                <td class="align-middle">{{ cmd.user.nom }} {{ cmd.user.prenom }}</td>
+                                                <td>
+                                                    <a href="/SupprimerCommande/{{ cmd.id }}"  class="bi bi-trash white" onclick="return confirm('Etes-vous sûr de supprimer cette commande?');"></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    {% else %}
+                                        <p>Aucun produit</p>
+                                    {% endif %}
+                                </table>
+                            </div>
+
+                        </div>
+
+
+                <div class="card-arrow">
+                    <div class="card-arrow-top-left"></div>
+                    <div class="card-arrow-top-right"></div>
+                    <div class="card-arrow-bottom-left"></div>
+                    <div class="card-arrow-bottom-right"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+{% endblock %}

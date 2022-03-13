@@ -3,20 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(
-    * fields={"email"},
-  * message="This email already exists try another name."
-  *)
  */
-class User implements UserInterface , \Serializable
+class User implements \Serializable, UserInterface
 {
     /**
      * @ORM\Id
@@ -26,6 +23,12 @@ class User implements UserInterface , \Serializable
     private $id;
 
     /**
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
@@ -60,14 +63,9 @@ class User implements UserInterface , \Serializable
     private $equipe;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="User")
+     * @ORM\Column(type="json")
      */
-    private $commandes;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Reclamation::class, inversedBy="user")
-     */
-    private $reclamation;
+    private $roles = ['ROLE_USER'];
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="user")
@@ -75,7 +73,7 @@ class User implements UserInterface , \Serializable
     private $commentaires;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable = true)
      */
     private $password;
 
@@ -84,13 +82,28 @@ class User implements UserInterface , \Serializable
      */
     private $username;
 
-    
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $banned = false;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Bloglikes::class, mappedBy="user")
+     */
+    private $likes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProfilePosts::class, mappedBy="user")
+     */
+    private $user;
 
     public function __construct()
     {
-        $this->commandes = new ArrayCollection();
-        $this->commentaires = new ArrayCollection();
+        $this->likes = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -186,47 +199,6 @@ class User implements UserInterface , \Serializable
         return $this;
     }
 
-    /**
-     * @return Collection|Commande[]
-     */
-    public function getCommandes(): Collection
-    {
-        return $this->commandes;
-    }
-
-    public function addCommande(Commande $commande): self
-    {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
-            $commande->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommande(Commande $commande): self
-    {
-        if ($this->commandes->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getUser() === $this) {
-                $commande->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getReclamation(): ?Reclamation
-    {
-        return $this->reclamation;
-    }
-
-    public function setReclamation(?Reclamation $reclamation): self
-    {
-        $this->reclamation = $reclamation;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Commentaire[]
@@ -284,9 +256,18 @@ class User implements UserInterface , \Serializable
 
     public function getRoles()
     {
-        return [
-            'ROLE_USER'
-        ];
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+    
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+    
+        // allows for chaining
+        return $this;
     }
 
     public function getSalt() {}
@@ -311,6 +292,78 @@ class User implements UserInterface , \Serializable
             $this->email,
             $this->password
         ) = unserialize($string, ['allowed_classes' =>false]);
+    }
+
+    public function getBanned(): ?bool
+    {
+        return $this->banned;
+    }
+
+    public function setBanned(bool $banned): self
+    {
+        $this->banned = $banned;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Bloglikes>
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Bloglikes $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Bloglikes $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getUser() === $this) {
+                $like->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProfilePosts>
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(ProfilePosts $user): self
+    {
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+            $user->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(ProfilePosts $user): self
+    {
+        if ($this->user->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getUser() === $this) {
+                $user->setUser(null);
+            }
+        }
+
+        return $this;
     }
 
     

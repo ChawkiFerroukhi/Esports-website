@@ -18,6 +18,30 @@ class JeuxRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Jeux::class);
     }
+function couuunt()
+{
+    $conn=$this->getEntityManager()->getConnection();
+    $sql='select jeux.id,jeux.nom,jeux.description, round(AVG(review.note),1) as e 
+from jeux left JOIN review ON (review.jeux_id_id=jeux.id) 
+    left join equipe_jeux on (jeux.id=equipe_jeux.jeux_id) group by (jeux.id) order by e desc; ';
+       $stmt=$conn->prepare($sql);
+    return $stmt->executeQuery()->fetchAllAssociative();
+
+}
+
+    function couuuntee()
+    {
+        $conn=$this->getEntityManager()->getConnection();
+        $sql='select jeux.id,jeux.nom,jeux.description, round(AVG(review.note),1) as e 
+from jeux left JOIN review ON (review.jeux_id_id=jeux.id) 
+    left join equipe_jeux on (jeux.id=equipe_jeux.jeux_id) group by (review.jeux_id_id) order by e ASC; ';
+        $stmt=$conn->prepare($sql);
+        return $stmt->executeQuery()->fetchAllAssociative();
+
+    }
+
+
+
 
     // /**
     //  * @return Jeux[] Returns an array of Jeux objects

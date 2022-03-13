@@ -1,0 +1,45 @@
+{% extends "base-front.html.twig" %}
+ {% block content %}
+     <div class="header-space"></div>          <div class="page-top-block type-match big-size" style="background-image: url(../../wp-content/uploads/2019/12/img13.jpg);">
+     <div class="parallax-image" data-position="50% 50%"><img class="jarallax-img" src="{{ asset('front-office/images/'~event.image~'') }}"></div>
+     <div class="container">
+         <div class="game-team"  >
+             <div class="item" style="margin-left: auto; margin-right: auto; padding-left: 200px; padding-right: 200px;">
+                 <div class="logo" ><img width="250" height="150" src="../../wp-content/uploads/2019/12/game-team-logo6-150x150.png" class="attachment-thumbnail size-thumbnail" alt="" loading="lazy" srcset="https://promo-theme.com/plaxer/wp-content/uploads/2019/12/game-team-logo6-150x150.png 150w, https://promo-theme.com/plaxer/wp-content/uploads/2019/12/game-team-logo6-150x150@2x.png 300w, https://promo-theme.com/plaxer/wp-content/uploads/2019/12/game-team-logo6-70x70.png 70w, https://promo-theme.com/plaxer/wp-content/uploads/2019/12/game-team-logo6-100x100.png 100w, https://promo-theme.com/plaxer/wp-content/uploads/2019/12/game-team-logo6.png 512w, https://promo-theme.com/plaxer/wp-content/uploads/2019/12/game-team-logo6-70x70@2x.png 140w, https://promo-theme.com/plaxer/wp-content/uploads/2019/12/game-team-logo6-100x100@2x.png 200w" sizes="(max-width: 150px) 100vw, 150px" /></div>
+                 <div class="title">{{ event.nom }}</div>
+                 <div class="points">{{ event.organisateur }}</div>
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+     <main class="main-container">
+         <div class="container">
+             <div class="row">
+                 <div class="col-12 col-lg-8">
+                     <div class="post-content-block">
+                         <div class="post-top">
+                             <div class="date"><span>Date match: </span>{{ event.date | date }}</div>
+                         </div>
+                         <div class="heading-block">
+                             <h1 class="h h4"> &#8211; eSport League &#8211;</h1>
+                         </div>
+                         <div class="post-content">
+
+                             <div class="clearfix"><p>{{ event.description }}</p>
+                             </div>
+
+                         </div>
+                         {% if app.user.id == users and participation %}
+                             <button name="submit" type="submit" id="submit" class="button-style1"><span><a href="{{ path('annuler_participants', {'id_part': participation,'id_user': app.user.id}) }}" style="color: white;"> Annuler </a></span></button>
+                             <button name="submit" type="submit" id="submit" class="button-style1"><span><a href="{{ path('get_qr', {'label': event.nom , 'image': event.image}) }}" style="color: white"> Get QR Code </a></span></button>
+                         {% else %}
+                             <button name="submit" type="submit" id="submit" class="button-style1"><span><a href="{{ path('add_participants', {'id_user': app.user.id, 'id_event': event.id}) }}" style="color: white;"> Reserver</a></span></button>
+                         {% endif %}
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </main>
+ {% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base-front.html.twig" %}
+ {% block content %}
+     <br><br>
+     <main class="main-container">
+         <div class="container">
+             <div id="post-1861" class="post-1861 page type-page status-publish hentry">
+                 <div class="content-area clearfix">
+
+
+                     <div class="vc_row wpb_row vc_row-fluid vc_row-620c25cae0d77">
+
+                         <div class="wpb_column vc_column_container vc_col-sm-12 vc_column_container-620c25cae110b"><div class="vc_column-inner "><div class="wpb_wrapper">              <div class="portfolio-block filter-block portfolio-5df0bb64e34cd popup-gallery gap-on portfolio-type-grid">
+                                         <div class="filter-buttons tal">
+                                             <div class="container wrap">
+                                                 <button class="button current" data-filter="*" data-magic-cursor="link-small">
+                                                     <span>All</span>
+                                                 </button>
+                                                 {% for e in events %}
+                                                 <button class="button" data-filter=".{{e.nom | formatEvent}}" data-magic-cursor="link-small">
+                                                     <span>{{ e.nom }}</span>
+                                                 </button>
+                                                 {% endfor %}
+                                             </div>
+                                         </div>
+
+                                         <div class="load-wrap row isotope">
+                                             <div class="grid-sizer col-1"></div>
+                                             {% for c in classement %}
+                                             <article class="portfolio-item {{ c.evenement.nom |formatEvent }} popup-item  col-12 col-sm-6 col-md-4 istp-item">
+                                                 <div class="wrap">
+                                                     <a class="plus-permalink permalink" href="../../../project/the-bridge/index.html"><i class="essential-set-add"></i><span>open project</span></a>
+                                                     <div class="with-video base-icon-play-button-2"></div>
+                                                     <div class="img" style="background-image: url({{ asset('front-office/images/'~c.evenement.image) }})"></div>
+                                                     <div class="content">
+                                                         <h6 class="title">{{ c.equipe.nom }}</h6>
+                                                         <div class="desc">{{ c.rang }}</div>
+                                                     </div>
+                                                     <a href="#" class="link" data-type="video" data-size="1920x1080" data-video='<div class="wrapper"><div class="video-wrapper"><iframe class="pswp__video" width="1920" height="1080" src="https://youtube.com/embed/1jWCXJfxHQM?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div></div>' data-magic-cursor="link-w-text" data-magic-cursor-text="Play" data-id="1"></a>      </div>
+                                             </article>
+                                        {% endfor %}
+                                         </div>
+
+                                         <div class="loadmore-button-block tac">
+                                             <a class="loadmore-button button-style2" data-type="grid" data-action="portfolio" data-array="[{&quot;id&quot;:378,&quot;cat&quot;:[&quot;dota-2&quot;]},{&quot;id&quot;:377,&quot;cat&quot;:[&quot;cs-go&quot;]},{&quot;id&quot;:382,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:381,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:380,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:379,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:390,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:383,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:389,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:388,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:387,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:386,&quot;cat&quot;:[&quot;cs-go&quot;]},{&quot;id&quot;:1460,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1461,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1462,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:1678,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1679,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1680,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1681,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1682,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1708,&quot;cat&quot;:[&quot;streams&quot;]}] " data-count="9" data-atts="{&quot;uniqid&quot;:&quot;5df0bb64e34cd&quot;,&quot;count_items&quot;:&quot;9&quot;,&quot;type&quot;:&quot;grid&quot;,&quot;packery_style&quot;:&quot;type1&quot;,&quot;cols&quot;:&quot;xs:1,sm:2,md:3,&quot;,&quot;gap&quot;:&quot;on&quot;,&quot;filter_buttons&quot;:&quot;on&quot;,&quot;filter_buttons_style&quot;:&quot;style1&quot;,&quot;filter_buttons_align&quot;:&quot;tal&quot;,&quot;navigation&quot;:&quot;load_more&quot;,&quot;popup_mode&quot;:&quot;on&quot;,&quot;thumb_size&quot;:&quot;&quot;,&quot;hover&quot;:&quot;default&quot;,&quot;open_project_link&quot;:&quot;on&quot;,&quot;css_animation&quot;:&quot;&quot;,&quot;slider_loop&quot;:&quot;on&quot;,&quot;slider_autoplay&quot;:&quot;on&quot;,&quot;slider_autoplay_timeout&quot;:&quot;5000&quot;,&quot;slider_arrows&quot;:&quot;on&quot;,&quot;slider_counter&quot;:&quot;on&quot;,&quot;orderby&quot;:&quot;post__in&quot;,&quot;order&quot;:&quot;ASC&quot;,&quot;source&quot;:&quot;&quot;,&quot;items&quot;:&quot;&quot;,&quot;categories&quot;:&quot;&quot;,&quot;css&quot;:&quot;&quot;}" data-magic-cursor="link">
+                                                 <span>Load More</span>
+                                                 <span class="load-dots">
+                  <em></em>
+                </span>
+                                             </a>
+                                         </div>
+
+                                     </div>
+                                 </div></div></div></div>
+                 </div>
+             </div>
+
+         </div>
+     </main>
+{% endblock %}

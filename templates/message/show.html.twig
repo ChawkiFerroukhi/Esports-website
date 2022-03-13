@@ -1,0 +1,94 @@
+{% extends 'base-message.html.twig' %}
+
+{% block title %}New Message{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+ <link href="{{ asset('back-office/css/vendor.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('back-office/css/app.min.css') }}" rel="stylesheet" />
+
+    <link href="{{ asset('back-office/plugins/jvectormap-next/jquery-jvectormap.css') }}" rel="stylesheet" />
+
+   <div class="card">
+  <div class="card-header bg-none fw-bold d-flex align-items-center">Discussion group <a href="#" class="ms-auto text-muted text-decoration-none" data-toggle="card-expand"><i class="fa fa-expand"></i></a></div>
+  <div class="card-body bg-white bg-opacity-15" data-scrollbar="true" data-height="200px">
+    <div class="widget-chat">
+      <div class="widget-chat-date">Today 14:21</div>
+      <div class="widget-chat-item">
+        <div class="widget-chat-media"><img src="assets/img/user/user-2.jpg" alt="" /></div>
+        <div class="widget-chat-content">
+          <div class="widget-chat-name">LevelUp Chat bot</div>
+          <div class="widget-chat-message">
+           Welcome to customer support, please describe your issue and wait for a moderator to reply!
+          </div>
+        </div>
+      </div>
+      <div class="widget-chat-item">
+        <div class="widget-chat-media"><img src="assets/img/user/user-2.jpg" alt="" /></div>
+        <div class="widget-chat-content">
+          <div class="widget-chat-message">
+           This might take a couple of minutes, if you don't like waiting you can report the issue by mail.
+          </div>
+        </div>
+      </div>
+      
+{% for message in messages %}
+{% if message.sender == app.user or message.receiver == app.user %}
+{% if message.sender == app.user %}
+<div class="widget-chat-item reply">
+        <div class="widget-chat-content">
+          <div class="widget-chat-message last">
+            {{message.contenu}}
+          </div>
+        </div>
+      </div>
+
+      {% else %}
+<div class="widget-chat-item">
+        <div class="widget-chat-media"><img src="assets/img/user/user-2.jpg" alt="" /></div>
+        <div class="widget-chat-content">
+          <div class="widget-chat-message">
+{{message.contenu}}          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+        {% endfor %}
+      
+    </div>
+  </div>
+  <div class="card-footer bg-none">
+   <form  action="{{ path('app_message_new')}}" method="POST">
+
+                    <label for="message_contenu" class="col-sm-2 col-form-label">
+                        Content                               
+                    </label>
+                    <div class="col-sm-10 mb-4 input-append">
+                    <input id="message_contenu" name="message[contenu]" class="form-control">
+                    </div>
+                            <p class="form-row">
+                            <input type="hidden" id="message__token" name="message[_token]" value="{{ form._token.vars.value }}"> 
+                            </p>
+                            </div>
+                            <input type="hidden" class="woocommerce-Input woocommerce-Input--text input-text" name="message[receiver]" id="message_receiver" value="{{ 60 }}" />
+                            <button type="submit" class="btn btn-primary add">
+                                    add
+                                </button>
+                </form>
+  </div>
+  
+  <!-- card-arrow -->
+  <div class="card-arrow">
+    <div class="card-arrow-top-left"></div>
+    <div class="card-arrow-top-right"></div>
+    <div class="card-arrow-bottom-left"></div>
+    <div class="card-arrow-bottom-right"></div>
+  </div>
+</div>
+{% endblock %}
+
+
+          {# <div class="widget-chat-status"><b>Read</b> 16:30</div> #}

@@ -1,0 +1,125 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <table id="datatableDefault" class="table text-nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Event
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Team
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Rank
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Actions
+                                                                                        
+                                                        
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for classement in classements %}
+                        <tr>
+                            <td>
+                                {{ classement.id }}
+                            </td>
+
+                            <td>
+                                {{ classement.evenement }}
+                            </td>
+                            <td>
+                                {{ classement.equipe }}
+                            </td>
+                            <td>
+                                {{ classement.rang }}
+                            </td>
+                            <td>
+                                <a href="{{ path('classement_edit', {'id': classement.id}) }}" class="bi bi-pencil white"></a>
+                                {{ include('classement/_delete_form.html.twig') }}
+                            </a>
+                            </td>
+                        </tr>
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-theme mt-4" style="float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add ranking
+    </button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        Add ranking
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form action="{{ path('classement_new') }}" method="post">
+                            <label for="classement_evenement" class="col-sm-2 col-form-label">
+                                Event        
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <select id="classement_evenement" name="classement[evenement]" class="form-select">
+                                {% for evenement in evenements %}
+                                    <option value ="{{evenement.id}}"> {{evenement.nom}} </option>
+                                {% endfor %}
+                                </select>
+                            </div>
+                            <label for="classement_equipe" class="col-sm-2 col-form-label">
+                                Team        
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <select id="classement_equipe" name="classement[equipe]" class="form-select">
+                                {% for equipe in equipes %}
+                                    <option value ="{{equipe.id}}"> {{equipe.nom}} </option>
+                                {% endfor %}
+                                </select>
+                            </div>
+                            <label for="classement_rang" class="col-sm-2 col-form-label">
+                                 Rank                               
+                             </label>
+                            <div class="col-sm-10 mb-4">
+                                <input id="classement_rang" name="classement[rang]" class="form-control">
+                            </div>
+                            <p class="form-row">
+                            <input type="hidden" id="classement__token" name="classement[_token]" value="{{ form._token.vars.value }}"> 
+                            </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    add
+                                </button>
+                            </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

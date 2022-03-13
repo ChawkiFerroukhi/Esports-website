@@ -1,0 +1,37 @@
+{% extends "base-front.html.twig" %}
+{% block title %}Login{% endblock %}
+ {% block content %} 
+    <div class="header-space"></div>          
+	<div class="page-top-block" style="margin-bottom: 0px;">
+        <div class="container">
+        </div>
+    </div>
+    <main class="main-container" style="background-image: url({{ asset('front-office/img/img84.jpg') }}); background-size: cover;">
+      <div class="container">
+        <div id="post-11" class="post-11 page type-page status-publish hentry">
+  			<div class="content-area clearfix">
+    			<div class="woocommerce" style="width: 60%; margin: auto;">
+					<div class="woocommerce-notices-wrapper">
+						<form class="woocommerce-form woocommerce-form-login login" name="change_password_form" method="post" style="background-color: rgba(0, 0, 0, 0.3); border-color: grey;">
+							<div class="content-area clearfix">
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto;">
+								</p>
+								<p style="width : 50%;margin: auto; font-size: 20px; margin-bottom: 1rem;">Reset your password</p>
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto;">
+									<input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="change_password_form[plainPassword][first]" id="change_password_form_plainPassword_first" autocomplete="username" value="" placeholder="New password" style="background-color: transparent; border-color: white; color: white;"/>			
+								</p>	
+                                <p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto;">
+									<input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="change_password_form[plainPassword][second]" id="change_password_form_plainPassword_second" autocomplete="username" value="" placeholder="Repeat password" style="background-color: transparent; border-color: white; color: white;"/>			
+								</p>	
+								<p class="form-row" style="width: 50%; margin: auto; margin-bottom: 3rem;">
+                                    <input type="hidden" id="change_password_form__token" name="change_password_form[_token]" value="{{ resetForm._token.vars.value }}">       
+									<button type="submit" class="btn" name="passwordreset" value="Reset password" style="color: white;background-color: rgba(7,80,208, 0.8); width: 100%; margin-top: 5rem;">Reset password</button>
+								</p>
+							</div>
+						</form>
+					</div>
+  				</div>
+        	</div>
+		</div>
+	</main>
+{% endblock %}

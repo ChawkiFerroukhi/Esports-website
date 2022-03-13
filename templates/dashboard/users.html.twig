@@ -1,0 +1,119 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <table id="datatableDefault" class="table text-nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Name
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Lastname
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Username
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Email
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Phone Number
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Join Date  
+                            
+                                                        
+                        </th>
+                        <th>
+                            Status  
+                            
+                                                        
+                        </th>
+                        <th>
+                            Actions  
+                                                                                  
+                                                        
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>
+                                {{ user.id }}
+                            </td>
+                            <td>
+                                {{ user.nom }}
+                            </td>
+                            <td>
+                                {{ user.prenom }}
+                            </td>
+                            <td>
+                                {{ user.username }}
+                            </td>
+                            <td>
+                                {{ user.email }}
+                            </td>
+                            <td>
+                                {{ user.phone }}
+                            </td>
+                            <td>
+                                {{ user.dateJoin ? user.dateJoin|date('Y-m-d H:i:s') : '' }}
+                            </td>
+                            <td>
+                                {% if user.banned == 0 %}
+                                <span class="badge d-block bg-theme bg-opacity-50 rounded-0 pt-5px w-70px" style="min-height: 18px">
+                                    ACTIVE
+                                                                                        
+                                </span>
+                                {% else %}
+                                <span class="badge d-block bg-red bg-opacity-50 rounded-0 pt-5px w-70px" style="min-height: 18px">
+                                    BANNED
+                                                                                        
+                                </span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('edit_user_admin', {'id': user.id}) }}" class="bi bi-pencil white"></a>
+                                {{ include('new_user/_delete_form.html.twig') }}
+                                </a>
+                                {% if user.banned == 0 %}
+                                <a href ="{{ path('ban_user', {'id': user.id}) }}"class="btn btn-danger" style="color: white;float: right; display: ineline-block">
+                                    Ban User
+                                </a>
+                                {% else %}
+                                <a href ="{{ path('ban_user', {'id': user.id}) }}" class="btn btn-success" style="color: white;float: right; display: ineline-block">
+                                    Unban User
+                                </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>
+        </div>
+    </div>
+{% endblock %}

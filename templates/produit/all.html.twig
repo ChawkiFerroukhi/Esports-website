@@ -1,0 +1,98 @@
+{% extends "base-dashboard.html.twig" %}
+
+{% block content %}
+
+
+            <div class="card mb-3">
+
+                <div class="card-body">
+
+                    <div class="d-flex fw-bold small mb-3">
+                        <span class="flex-grow-1"></span>
+                        <a href="/dashboard/addProduit" class="btn d-block btn-outline-theme">
+                            <i class="fa me-2 ms-n2 opacity-5"></i> Add Product
+                        </a>
+                    </div>
+                    <div class="d-flex fw-bold small mb-3">
+                        <span class="flex-grow-1">ADD PRODUCT</span>
+                        <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+                    </div>
+
+
+
+                                <table id="datatableDefault" class="table table-hover text-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th class="pt-0 pb-2">#</th>
+                                        <th class="pt-0 pb-2">Product</th>
+                                        <th class="pt-0 pb-2">Prix</th>
+                                        <th class="pt-0 pb-2">Quantite</th>
+                                        <th class="pt-0 pb-2">Publie</th>
+                                        <th class="pt-0 pb-2">Details</th>
+                                        <th class="pt-0 pb-2">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    {% if produits %}
+                                    <tbody>
+                                    {% for produit in produits %}
+                                    <tr>
+                                        <td class="w-10px align-middle">{{ produit.id }}</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="w-50px h-50px bg-white bg-opacity-25 d-flex align-items-center justify-content-center">
+                                                    <img alt="" class="mw-100 mh-100" src="{{ asset('front-office/img/') }}{{ produit.image }}" />
+                                                </div>
+                                                <div class="ms-3">
+                                                    <a href="#" class="text-white text-opacity-75 text-decoration-none">{{ produit.nom }}, Ref: {{ produit.referance }}</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">{{ produit.price }}</td>
+                                        <td class="align-middle">{{ produit.quantity }}</td>
+                                        {% if produit.active == true %}
+                                            <td>
+                                                <span class="badge d-block bg-theme bg-opacity-50 rounded-0 pt-5px w-70px" style="min-height: 18px">
+                                                    Published
+                                                                                            
+                                                </span>
+                                            </td>
+                                        {% else %}
+                                        <td>
+                                            <span class="badge d-block bg-red bg-opacity-50 rounded-0 pt-5px w-80px" style="min-height: 18px">
+                                                Unpublished
+                                                                                        
+                                            </span>
+                                        </td>
+                                        {% endif %}
+                                        <td>
+                                            <a href="/store/produit/{{ produit.id }}" class="btn btn-dark">Détails</a>
+                                        </td>
+                                        <td>
+                                            <a href="/dashboard/produit/edit/{{ produit.id }}" class="bi bi-pencil white"></a>
+                                            <a href="/dashboard/produit/delete/{{ produit.id }}"  class="bi bi-trash white" onclick="return confirm('Etes-vous sûr de supprimer ce Produit?');"></a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    {% else %}
+                                        <p>Aucun produit</p>
+                                    {% endif %}
+                                </table>
+
+                </div>
+
+
+
+                <div class="card-arrow">
+                    <div class="card-arrow-top-left"></div>
+                    <div class="card-arrow-top-right"></div>
+                    <div class="card-arrow-bottom-left"></div>
+                    <div class="card-arrow-bottom-right"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+{% endblock %}

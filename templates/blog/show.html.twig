@@ -1,0 +1,135 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+	<main class="main-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-8">
+					<article id="post-470" class="post-content-block post-470 post type-post status-publish format-standard has-post-thumbnail hentry category-gs-go">
+						<br>
+						<br>
+						<br>
+						<br>
+
+						<div class="featured-image">
+							<img src="{{ asset('front-office/img/') }}{{ blog.image }}" style="width: 100%"></span>
+						</div>
+						<div class="post-top">
+							<div class="date">{{ blog.postDate ? blog.postDate| ago }}</div>
+						</div>
+						<div class="heading-block">
+							<h1 class="h h4">{{blog.titre}}</h1>
+						</div>
+						<div class="post-content">
+							{{blog.contenu}}
+						</div>
+					</article>
+					<div class="post-bottom">
+						<div class="right">
+							<div class="item">
+								<a href="{{ path('blog_like', {'id': blog.id}) }}" class ="btn btn-link js-like">
+                                    {% if app.user and blog.isLikedByUser(app.user) %}
+									<i class="base-icon-chat"></i>
+                                    {% else %}
+                                    <i class="base-icon-heart"></i>
+                                    {% endif %}
+									<span class="js-likes"> {{ blog.likes | length }} </span>
+								</a>
+							</div>
+							<div class="item">
+								<i class="base-icon-chat-2"></i>
+								<span> {{ blog.commentaires | length }} </span>
+							</div>
+						</div>
+					</div>
+
+					<div id="comments" class="comments-area">
+
+						<div class="comment-items-wrap">
+							<h5 class="comment-title">Comments</h5>
+							<ul class="comment-items">
+							{% for commentaire in commentaires %}
+								<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 comment-item clearfix" id="comment-5">
+									
+									<a href="#" class="replytocom" data-id="5">
+										<i class="base-icon-reply"></i>
+										<span>reply</span>
+									</a>
+									<div class="image"><img src="https://secure.gravatar.com/avatar/61819f6a0a17a0734f903ed6bc8124d1?s=300&amp;d=mm&amp;r=g" width="300" height="300" alt="Avatar" class="avatar avatar-300wp-user-avatar wp-user-avatar-300 alignnone photo avatar-default"/></div>
+									<div class="area">
+										<div class="top">
+											<div class="name" style="margin-bottom: 0px;">{{ commentaire.user.username }}</div>
+											<div class="date" style="position: absolute; right: 0;"> {{ commentaire.date ? commentaire.date | ago }} </div>
+										</div>
+										<div class="content">
+											{{ commentaire.contenu }}
+										</div>
+									</div>
+									 
+								</li>
+								{% endfor %}
+							</li>
+							<!-- #comment-## -->
+						</ul>
+					</div>
+
+					<div id="commentform-area">
+						<div id="respond" class="comment-respond">
+							<h5 class="comment-title">
+								<span>Leave a Comment
+									<small>
+										<a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a>
+									</small>
+								</span>
+							</h5>
+								<form id="commentaire_form" name="commentaire" method = "post">
+								<div class="col-12">
+									<div class="col-12">
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+                				<textarea id = "commentaire_contenu" name="commentaire[contenu]" cols="40" rows="6" class="wpcf7-form-control wpcf7-textarea style1 light" aria-invalid="false" placeholder="Contenu"></textarea>          </p>
+							
+								{# <button class="button-style1">{{ button_label|default('Comment') }}</button> #}
+								<p class="form-row">
+				                    <input type="hidden" id="commentaire__token" name="commentaire[_token]" value="{{ form._token.vars.value }}">
+                                    <button id="submit_commentaire" type="submit" class="button-style1" name="save" value="" >Comment</button>
+                                        &nbsp;
+			                    </p>	
+						
+						</div>
+						</form>	
+						<!-- #respond -->
+					</div>
+				</div>
+			</div>
+		</main>
+	{% endblock %}
+    {% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+
+        function onClickBtnLike(event) {
+            event.preventDefault();
+
+            const url = this.href;
+            const spanCount = this.querySelector('span.js-likes');
+            const icon = this.querySelector('i');
+
+            axios.get(url).then(function (response) {
+                spanCount.textContent = response.data.likes;
+
+                if (icon.classList.contains('base-icon-chat')) {
+                    icon.classList.replace('base-icon-chat', 'base-icon-heart');
+                }
+                else {
+                    icon.classList.replace('base-icon-heart', 'base-icon-chat');
+                }
+            })
+
+        }
+
+        document.querySelectorAll('a.js-like').forEach(function (link) {
+            link.addEventListener('click', onClickBtnLike);
+        })
+    </script>
+    {% endblock %}
+

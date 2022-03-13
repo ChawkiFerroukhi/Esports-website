@@ -1,0 +1,68 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+    <div class="header-space"></div>          <div class="page-top-block type-" style="">
+    <div class="container">
+        <div class="heading-block">
+            <h1 class="h h3">Col 2</h1>
+        </div>
+    </div>
+</div>
+    <main class="main-container">
+        <div class="container">
+            <div id="post-1859" class="post-1859 page type-page status-publish hentry">
+                <div class="content-area clearfix">
+
+
+                    <div class="vc_row wpb_row vc_row-fluid vc_row-620c25c8c8d2b">
+
+                        <div class="wpb_column vc_column_container vc_col-sm-12 vc_column_container-620c25c8c909b"><div class="vc_column-inner "><div class="wpb_wrapper">              <div class="portfolio-block filter-block portfolio-5df0bb64e34cd popup-gallery gap-on portfolio-type-grid">
+
+
+                                        <div class="load-wrap row isotope">
+                                            <div class="grid-sizer col-1"></div>
+                                            {% if jeuxes %}
+                                                {% for jeu in jeuxes %}
+
+                                            <article class="portfolio-item category-dota-2 popup-item  col-12 col-sm-6 istp-item">
+                                                <br>
+
+                                                <div class="wrap">
+                                                    <a class="plus-permalink permalink" href="/jeux/{{ jeu.id }}"><i class="essential-set-add"></i><span>open project</span></a>
+                                                    <div class="with-video "></div>
+                                                    <div class="img" style="background-image: url({{ asset('front-office/img/img1.jpg') }})"></div>
+                                                    {#  <div class="img" style="background-image: url({{ asset('front-office/img/{{jeu.image}}') }})"></div>#}
+
+                                                    <div class="content">
+                                                        <h6 class="title">{{ jeu.nom }}</h6>
+                                                        <div class="desc">{{ jeu.description }}</div>
+
+                                                    </div>
+
+                                                    <a href="#" class="link" data-type="video" data-size="1920x1080" data-video='<div class="wrapper"><div class="video-wrapper"><iframe class="pswp__video" width="1920" height="1080" src="https://youtube.com/embed/1jWCXJfxHQM?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div></div>' data-magic-cursor="link-w-text" data-magic-cursor-text="Play" data-id="1"></a>      </div>
+                                            </article>
+                                                    <a href="{{ path('affichfrontdetail',{'id':jeu.id}) }}" class="nk-post-img">Detail </a>
+
+                                                {% endfor %}
+                                            {% else %}
+                                                <p>Aucun jeux</p>
+                                            {% endif %}
+
+                                        </div>
+
+                                        <div class="loadmore-button-block tac">
+                                            <a class="loadmore-button button-style2" data-type="grid" data-action="portfolio" data-array="[{&quot;id&quot;:376,&quot;cat&quot;:[&quot;cs-go&quot;]},{&quot;id&quot;:378,&quot;cat&quot;:[&quot;dota-2&quot;]},{&quot;id&quot;:377,&quot;cat&quot;:[&quot;cs-go&quot;]},{&quot;id&quot;:382,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:381,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:380,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:379,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:390,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:383,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:389,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:388,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:387,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:386,&quot;cat&quot;:[&quot;cs-go&quot;]},{&quot;id&quot;:1460,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1461,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1462,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:1678,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1679,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1680,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1681,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1682,&quot;cat&quot;:[&quot;streams&quot;]},{&quot;id&quot;:1708,&quot;cat&quot;:[&quot;streams&quot;]}] " data-count="8" data-atts="{&quot;uniqid&quot;:&quot;5df0bb64e34cd&quot;,&quot;count_items&quot;:&quot;8&quot;,&quot;type&quot;:&quot;grid&quot;,&quot;packery_style&quot;:&quot;type1&quot;,&quot;cols&quot;:&quot;xs:1,sm:2,&quot;,&quot;gap&quot;:&quot;on&quot;,&quot;filter_buttons&quot;:&quot;on&quot;,&quot;filter_buttons_style&quot;:&quot;style1&quot;,&quot;filter_buttons_align&quot;:&quot;tal&quot;,&quot;navigation&quot;:&quot;load_more&quot;,&quot;popup_mode&quot;:&quot;on&quot;,&quot;thumb_size&quot;:&quot;&quot;,&quot;hover&quot;:&quot;default&quot;,&quot;open_project_link&quot;:&quot;on&quot;,&quot;css_animation&quot;:&quot;&quot;,&quot;slider_loop&quot;:&quot;on&quot;,&quot;slider_autoplay&quot;:&quot;on&quot;,&quot;slider_autoplay_timeout&quot;:&quot;5000&quot;,&quot;slider_arrows&quot;:&quot;on&quot;,&quot;slider_counter&quot;:&quot;on&quot;,&quot;orderby&quot;:&quot;post__in&quot;,&quot;order&quot;:&quot;ASC&quot;,&quot;source&quot;:&quot;&quot;,&quot;items&quot;:&quot;&quot;,&quot;categories&quot;:&quot;&quot;,&quot;css&quot;:&quot;&quot;}" data-magic-cursor="link">
+                                                <span>Load More</span>
+                                                <span class="load-dots">
+                  <em></em>
+                </span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div></div></div></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+{% endblock %}

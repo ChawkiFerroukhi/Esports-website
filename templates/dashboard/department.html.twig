@@ -32,7 +32,7 @@
                             <td>{{ departement.description }}</td>
                             <td>
                                 <a href="{{ path('departement_edit', {'id': departement.id}) }}" class="bi bi-pencil white"></a>
-                                <a class="bi bi-trash white"></a>
+                                {{ include('departement/_delete_form.html.twig') }}
                             </td>
                         </tr>
                     {% endfor %}
@@ -46,6 +46,47 @@
                 <div class="card-arrow-bottom-right"></div>
             </div>
         </div>
-        <a href="{{ path('departement_new')}}"><button class ="btn btn-outline-theme mt-4" style="float: right;"><span>Add Department</span></button></a>
+        <button type="button" class="btn btn-outline-theme mt-4" style="float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add Department
+    </button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        Add Department
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form action="{{ path('departement_new') }}" method="post">
+                    <label for="departement_nom" class="col-sm-2 col-form-label">
+                        Name                               
+                    </label>
+                    <div class="col-sm-10 mb-4">
+                    <input id="departement_nom" name="departement[nom]" class="form-control">
+                    </div>
+                            <label for="departement_description" class="col-sm-2 col-form-label">
+                                Description                                  
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                            <textarea id="departement_description" name="departement[description]" class="form-control"></textarea>
+                            </div>
+                            <p class="form-row">
+                            <input type="hidden" id="departement__token" name="departement[_token]" value="{{ form._token.vars.value }}"> 
+                            </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    add
+                                </button>
+                            </div>
+                </form>
+            </div>
+        </div>
+    </div>
     
 {% endblock %}

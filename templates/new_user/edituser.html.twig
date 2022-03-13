@@ -1,11 +1,86 @@
+{% extends "base-dashboard.html.twig" %}
 {% block title %}Edit User{% endblock %}
 
-{% block body %}
-    <h1>Edit User</h1>
-
-    {{ include('new_user/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('new_user_index') }}">back to list</a>
-
-    {{ include('new_user/_delete_form.html.twig') }}
+{% block content %}
+<div id="general" class="mb-5">
+                        <h4>
+                            <i class="far fa-user fa-fw text-theme"></i>
+                            Edit User
+                        </h4>
+                        <p>
+                            View and update {{ user.username }} account information and settings.
+                        </p>
+                        <div class="card">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex align-items-center">
+                                    <div class="flex-1 text-break">
+                                        <form method="post" class="form-group row m-3">
+                                            <label for="user_email" id ="test" class="col-sm-2 col-form-label">
+                                            email                               
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_email" name="user[email]" type="email" class="form-control" value="{{ user.email }}">
+                                            </div>
+                                            <label for="user_username" class="col-sm-2 col-form-label mb-4">
+                                                Username                                  
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_username" name="user[username]" type="text" class="form-control" value="{{ user.username }}">
+                                            </div>
+                                            <label for="user_prenom" class="col-sm-2 col-form-label mb-4">
+                                                Name                                             
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_prenom" name="user[prenom]" type="text" class="form-control" value="{{ user.prenom }}">
+                                            </div>
+                                            <label for="user_nom" class="col-sm-2 col-form-label mb-4">
+                                                Lastname                                
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_nom" name="user[nom]" type="text" class="form-control" value="{{ user.nom }}">
+                                            </div>
+                                            <label for="user_password" class="col-sm-2 col-form-label mb-4">
+                                                Password                                              
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_password" name="user[password]" type="password" class="form-control" value="{{ user.password }}">
+                                            </div>
+                                            <label for="user_phone" class="col-sm-2 col-form-label mb-4">
+                                                Phone number         
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_phone" name="user[phone]" type="number" class="form-control" value="{{ user.phone }}">
+                                            </div>
+                                            <label for="user_Departement" class="col-sm-2 col-form-label mb-4">
+                                                Department        
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <select id="user_Departement" name="user[Departement]" class="form-select">
+                                                {% for departement in departements %}
+                                                    <option value ="{{departement.id}}"> {{departement.nom}} </option>
+                                                {% endfor %}
+                                                </select>
+                                            </div>
+                                            <input type="hidden" id="user__token" name="user[_token]" value="{{ form._token.vars.value }}" />
+                                            <div>
+                                                <button class="btn btn-outline-default w-100px">
+                                                    Save                                                
+                                                </button>
+                                                <a href="{{ path('new_user_index') }}" class="btn btn-outline-default w-100px">
+                                                    Cancel                                                
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-arrow">
+                                                            <div class="card-arrow-top-left"></div>
+                                                            <div class="card-arrow-top-right"></div>
+                                                            <div class="card-arrow-bottom-left"></div>
+                                                            <div class="card-arrow-bottom-right"></div>
+                                                        </div>
+                        </div>
+                        
+                    </div>
 {% endblock %}

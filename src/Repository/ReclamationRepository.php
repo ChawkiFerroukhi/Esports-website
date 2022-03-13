@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Reclamation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +19,30 @@ class ReclamationRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Reclamation::class);
+    }
+
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function add(Reclamation $entity, bool $flush = true): void
+    {
+        $this->_em->persist($entity);
+        if ($flush) {
+            $this->_em->flush();
+        }
+    }
+
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function remove(Reclamation $entity, bool $flush = true): void
+    {
+        $this->_em->remove($entity);
+        if ($flush) {
+            $this->_em->flush();
+        }
     }
 
     // /**
@@ -47,4 +73,14 @@ class ReclamationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function checkForSpam($value)
+    {
+     $result = $this->createQueryBuilder('r')
+                    ->andWhere('r.user = :val', 'r.status = 0')
+                    ->setParameter('val', $value)
+                    ->getQuery()
+                    ->getResult();
+     return count($result);
+    }
 }

@@ -1,0 +1,4 @@
+<form method="post" style="display: inline-block" action="{{ path('classement_delete', {'id': classement.id}) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ classement.id) }}">
+    <button style="background-color: transparent"><a class="bi bi-trash white"></a></button>
+</form>

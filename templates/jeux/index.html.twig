@@ -1,0 +1,62 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+
+
+        <div class="card">
+            <div class="card-body">
+            <div style="float: right;">
+        <a class="btn btn-outline-theme" href="{{ path('jeux_index') }}"> sort by  high rate </a>
+        <a class="btn btn-outline-theme" href="{{ path('jeux_indexee') }}"> sort by  low rate </a>
+    </div>
+                <table id="table" class="table text-nowrap w-100">
+                    <thead>
+                        <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th> note_moyenne</th>
+                        <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for jeux  in jeuxes  %}
+                        <tr>
+                            <td>{{ jeux.id }}</td>
+                            <td>{{ jeux.nom }}</td>
+                            <td>{{ jeux.description }}</td>
+                            <td>{{ jeux.e }}</td>
+                            <td>
+                                <a href="{{ path('jeux_edit', {'id': jeux.id}) }}" class="bi bi-pencil white"></a>
+                                {{ include('jeux/_delete_form.html.twig') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-arrow">
+                <div class="card-arrow-top-left"></div>
+                <div class="card-arrow-top-right"></div>
+                <div class="card-arrow-bottom-left"></div>
+                <div class="card-arrow-bottom-right"></div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-outline-theme mt-4" style="float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add Game
+    </button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        Add Game
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                {{ include('jeux/_form.html.twig', {'button_label': 'Add'}) }}
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

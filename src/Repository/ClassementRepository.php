@@ -9,11 +9,15 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * @method Classement|null find($id, $lockMode = null, $lockVersion = null)
  * @method Classement|null findOneBy(array $criteria, array $orderBy = null)
- * @method Classement[]    findAll()
  * @method Classement[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ClassementRepository extends ServiceEntityRepository
 {
+    public function findAll()
+    {
+        return $this->findBy(array(), array('rang' => 'ASC'));
+    }
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Classement::class);

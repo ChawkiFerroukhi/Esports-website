@@ -30,7 +30,7 @@ class Commentaire
     /**
      * @ORM\ManyToOne(targetEntity=Blog::class, inversedBy="commentaires")
      */
-    private $Blog;
+    private $blog;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commentaires")
@@ -68,12 +68,12 @@ class Commentaire
 
     public function getBlog(): ?Blog
     {
-        return $this->Blog;
+        return $this->blog;
     }
 
-    public function setBlog(?Blog $Blog): self
+    public function setBlog(?Blog $blog): self
     {
-        $this->blog = $Blog;
+        $this->blog = $blog;
 
         return $this;
     }
@@ -82,6 +82,13 @@ class Commentaire
     {
         return $this->user;
     }
+
+    public function __tostring()
+    {
+        return (string) $this->getBlog();
+    }
+
+    
 
     public function setUser(?User $user): self
     {

@@ -1,0 +1,34 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Equipe index{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+    <h1>Teams</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipe in equipes %}
+            <tr>
+                <td>{{ equipe.id }}</td>
+                <td>{{ equipe.nom }}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no teams found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

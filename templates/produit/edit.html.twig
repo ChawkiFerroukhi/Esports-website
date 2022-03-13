@@ -1,0 +1,57 @@
+{% extends "base-back.html.twig" %}
+
+{% block content %}
+    <div id="content" class="app-content">
+
+        <div class="row">
+
+
+                <div class="card mb-3">
+
+                    <div class="card-body">
+
+                        <div class="d-flex fw-bold small mb-3">
+                            <span class="flex-grow-1"></span>
+                            <a href="/dashboard/produits" class="btn d-block btn-outline-theme">
+                                <i class="fa me-2 ms-n2 opacity-5"></i> View Products
+                            </a>
+                        </div>
+                        <div class="d-flex fw-bold small mb-3">
+                            <span class="flex-grow-1">ADD PRODUCT</span>
+                            <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+                        </div>
+
+
+                        <div class="ratio ratio-21x9 mb-3">
+                            <div class="form-group mb-3">
+                                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                                <div class="form-group mb-3">{{ form_row(form.referance, {'attr':{'class':'form-control'}}) }}</div>
+                                <div class="form-group mb-3">{{ form_row(form.nom, {'attr':{'class':'form-control'}}) }}</div>
+                                <div class="form-group mb-3">{{ form_row(form.description, {'attr':{'class':'form-control'}}) }}</div>
+                                <div class="form-group mb-3">{{ form_row(form.price,{'attr':{'class':'form-control'}}) }}</div>
+                                <div class="form-group mb-3">{{ form_row(form.quantity,{'attr':{'class':'form-control'}}) }}</div>
+                                <div class="form-group mb-3">{{ form_row(form.image,{'attr':{'class':'form-control'}}) }}</div>
+                                <div class="form-group mb-3">{{ form_row(form.solde, {'attr':{'class':'form-control'}}) }}</div>
+                                <div class="form-check form-switch">{{ form_row(form.active,{'attr':{'class':'form-check-input'}}) }}</div>
+                                {{ form_widget(form) }}
+                                <button type="submit" class="btn btn-primary">Modifier</button>
+                                {{ form_end(form) }}
+
+                              </div>
+                        </div>
+                </div>
+
+
+                <div class="card-arrow">
+                    <div class="card-arrow-top-left"></div>
+                    <div class="card-arrow-top-right"></div>
+                    <div class="card-arrow-bottom-left"></div>
+                    <div class="card-arrow-bottom-right"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base-dashboard.html.twig" %}
+    {% block content %}
+        <a href="{{ path('add_events') }}"><button type="button" style="margin-left: 15px; margin-bottom: 15px;" class="btn btn-theme">Add Event</button></a>
+        <a href="{{ path('show_events_ordered_admin') }}"><button type="button" style="margin-left: 15px; margin-bottom: 15px;" class="btn btn-theme">Events By Date</button></a>
+        <a href="{{ path('show_calendar') }}"><button type="button" style="margin-left: 15px; margin-bottom: 15px;" class="btn btn-theme">Calendar</button></a>
+
+        <div class="card">
+            <div class="card-body">
+                <table id="" class="">
+                    <thead>
+                    <tr>
+                        <th>
+                            id
+
+
+                        </th>
+                        <th>
+                            Nom
+
+
+                        </th>
+                        <th>
+                            Organisateur
+
+
+                        </th>
+                        <th>
+                            Description
+
+
+                        </th>
+                        <th>
+                            image
+
+
+                        </th>
+                        <th>
+                            date
+
+
+                        </th>
+                        <th>
+                            Edit
+
+
+                        </th>
+                        <th></th>
+                        <th>
+                            Cancel
+
+
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for event in events %}
+                        <tr  class="table-danger">
+                            <td>
+                                {{ event.id }}
+                            </td>
+                            <td>
+                                {{ event.nom }}
+                            </td>
+                            <td>
+                                {{ event.organisateur }}
+                            </td>
+                            <td >
+                                {{ event.description }}
+                            </td>
+                            <td>
+                                <img style="width:5%; height: 5%;" src="{{ asset('front-office/images/')~event.image }}"/>
+                            </td>
+                            <td>
+                                {{ event.date ? event.date|date('Y-m-d') : ''}}
+                            </td>
+                            <td><a href="{{ path('edit_event',{ 'id': event.id }) }}" class="text-decoration-none text-white">Edit</a></td>
+                           <td></td>
+                            <td><a href="{{ path('delete_event',{ 'id': event.id }) }}" class="text-decoration-none text-white">Cancel</a></td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-arrow">
+                <div class="card-arrow-top-left"></div>
+                <div class="card-arrow-top-right"></div>
+                <div class="card-arrow-bottom-left"></div>
+                <div class="card-arrow-bottom-right"></div>
+            </div>
+        </div>
+{% endblock %}

@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\ReclamationRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=ReclamationRepository::class)
  */
-class Reclamation
+class Reclamation  
 {
     /**
      * @ORM\Id
@@ -20,9 +20,23 @@ class Reclamation
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity=User::class )
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $user;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $sujet;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email."
+     * )
+     */
+    private $email;
 
     /**
      * @ORM\Column(type="text")
@@ -40,18 +54,26 @@ class Reclamation
     private $status;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="reclamation")
+     * @ORM\ManyToOne(targetEntity=Categories::class, cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $user;
-
-    public function __construct()
-    {
-        $this->user = new ArrayCollection();
-    }
+    private $category;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
     public function getSujet(): ?string
@@ -62,6 +84,18 @@ class Reclamation
     public function setSujet(string $sujet): self
     {
         $this->sujet = $sujet;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
@@ -102,33 +136,18 @@ class Reclamation
         return $this;
     }
 
-    /**
-     * @return Collection|user[]
-     */
-    public function getUser(): Collection
+    public function getCategory(): ?Categories
     {
-        return $this->user;
+        return $this->category;
     }
 
-    public function addUser(User $user): self
+    public function setCategory(?Categories $category): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-            $user->setReclamation($this);
-        }
+        $this->category = $category;
 
         return $this;
     }
 
-    public function removeUser(User $user): self
-    {
-        if ($this->user->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getReclamation() === $this) {
-                $user->setReclamation(null);
-            }
-        }
 
-        return $this;
-    }
+    
 }

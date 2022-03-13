@@ -1,0 +1,9 @@
+{% block title %}New ProfilePosts{% endblock %}
+
+{% block body %}
+    <h1>Create new ProfilePosts</h1>
+
+    {{ include('profile_posts/_form.html.twig') }}
+
+    <a href="{{ path('profile_posts_index') }}">back to list</a>
+{% endblock %}

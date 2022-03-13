@@ -1,0 +1,74 @@
+{% extends 'base-front.html.twig' %}
+{% block title %}Reclamations{% endblock %}
+{% block content %}
+<script>
+{# Only enable button when all textfields are filled  #}
+ function success() {
+	 if(document.getElementById("reclamation_sujet").value===""
+   || document.getElementById("reclamation_email").value===""
+   || document.getElementById("reclamation_description").value==="") {
+            document.getElementById('submit_reclamation').disabled = true;
+        } else {
+            document.getElementById('submit_reclamation').disabled = false;
+        }
+    }
+
+
+{# Prevents ability to double click  #}
+$(function(){
+        document.getElementById("submit_reclamation").onclick = function() {
+          document.getElementById("reclamation_form").submit();
+            this.disabled = true;
+        }
+    });
+</script>
+<div class="header-space"></div>
+<div class="page-top-block type-" style="">
+            <div class="container">
+                  <div class="heading-block">
+            <h1 class="h h3">Report a problem</h1>
+          </div>
+              </div>
+    </div>
+        <main class="main-container">
+      <div class="container">
+        <div id="post-11" class="post-11 page type-page status-publish hentry">
+  <div class="content-area clearfix">
+    <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
+		<form id="reclamation_form" onkeyup="success()" class="woocommerce-form woocommerce-form-login login" name="reclamation"  method="post">
+			<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="reclamation_sujet">Subject&nbsp;<span>*</span></label>
+				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="reclamation[sujet]" id="reclamation_sujet"  />
+            </p>
+            <p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+            <label for="reclamation_category">Category&nbsp;<span>*</span></label>
+            {{ form_widget(form.category) }}
+            </p>
+            <p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+			{{ form_errors(form.email) }}
+      	<label for="reclamation_email">Email&nbsp;<span>*</span></label>
+        
+ 
+				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="reclamation[email]" id="reclamation_email" value="{{ app.user.email }}"/>
+            </p>
+				<input type="hidden" class="woocommerce-Input woocommerce-Input--text input-text" name="reclamation[user]" id="reclamation_user" value="{{ app.user.id }}" />           
+            <p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="reclamation_description">Description&nbsp;<span>*</span></label>
+                <textarea id = "reclamation_description" name="reclamation[description]" cols="40" rows="36" class="wpcf7-form-control wpcf7-textarea style1 light" aria-invalid="false" placeholder="Description"></textarea>          </p>
+			<p class="form-row">
+				<input type="hidden" id="reclamation__token" name="reclamation[_token]" value="{{ form._token.vars.value }}">
+                <button id="submit_reclamation" type="submit" class="woocommerce-Button button" name="save" value="" disabled>Send</button>
+        &nbsp;
+			</p>     
+		</form>
+     <a id="startChat" href="/message/new" class="woocommerce-Button button" name="startChat" value="" >OR START REALTIME CHAT</a>
+</div>
+
+  </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  
+    {% endblock %}

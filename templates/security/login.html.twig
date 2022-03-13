@@ -1,52 +1,63 @@
 {% extends "base-front.html.twig" %}
 {% block title %}Login{% endblock %}
  {% block content %} 
-    <div class="header-space"></div>          <div class="page-top-block type-" style="">
-            <div class="container">
-                  <div class="heading-block">
-            <h1 class="h h3">My account</h1>
-          </div>
-              </div>
+    <div class="header-space"></div>          
+	<div class="page-top-block" style="margin-bottom: 0px;">
+        <div class="container">
+        </div>
     </div>
-        <main class="main-container">
+    <main class="main-container" style="background-image: url({{ asset('front-office/img/img84.jpg') }}); background-size: cover;">
       <div class="container">
         <div id="post-11" class="post-11 page type-page status-publish hentry">
-  <div class="content-area clearfix">
-    <div class="woocommerce"><div class="woocommerce-notices-wrapper"></div>
-
-		<h4>Login</h4>
-		<form class="woocommerce-form woocommerce-form-login login" action={{ path('login') }}  method="post">
-        
-			
-			<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
-				<label for="username">Username&nbsp;<span class="required">*</span></label>
-				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="_username" id="username" autocomplete="username" value="" />			</p>
-			<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide">
-				<label for="password">Password&nbsp;<span class="required">*</span></label>
-				<input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="_password" id="password" autocomplete="current-password" />
-			</p>
-
-			
-			<p class="form-row">
-				<input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="7e05e5733f" /><input type="hidden" name="_wp_http_referer" value="/plaxer/my-account/" />        <button type="submit" class="woocommerce-Button button" name="login" value="Log in">Log in</button>
-        &nbsp;
-				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox inline">
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span>Remember me</span>
-				</label>
-			</p>
-			<p class="woocommerce-LostPassword lost_password">
-				<a href="lost-password/index.html">Lost your password?</a>
-			</p>
-
-			
-		</form>
-
-
-</div>
-  </div>
-        </div>
-
-      </div>
-    </main>
-  </div>
+  			<div class="content-area clearfix">
+    			<div class="woocommerce" style="width: 60%; margin: auto;">
+					<div class="woocommerce-notices-wrapper">
+						<form class="woocommerce-form woocommerce-form-login login"  method="post" style="background-color: rgba(0, 0, 0, 0.3); border-color: grey;">
+							<div class="content-area clearfix">
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto;">
+								</p>
+								<p style="width : 50%;margin: auto; font-size: 20px; margin-bottom: 1rem;">SIGN IN</p>
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto;">
+									<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="_username" id="username" autocomplete="username" value="" placeholder="Email or username" style="background-color: transparent; border-color: white; color: white;"/>			
+								</p>
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto;">
+									<input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="_password" id="password" autocomplete="current-password" placeholder="Password" style="background-color: transparent; border-color: white; color: white;" />
+								</p>
+								<p class="woocommerce-LostPassword lost_password" style="width: 50%; margin: auto;">
+									<label class="woocommerce-form__label woocommerce-form__label-for-checkbox inline">
+										<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="_remember_me" id="remember_me" type="checkbox"/> <span>Remember me</span>
+									</label>
+									<a href="/reset-password" style="float: right; color: white;"><span style="font-size: 13px;">Forgot password?</span></a>
+								</p>			
+								<p class="form-row" style="width: 50%; margin: auto; margin-bottom: 3rem;">
+									<input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="7e05e5733f" /><input type="hidden" name="_wp_http_referer" value="/plaxer/my-account/" />        
+									<button type="submit" class="btn" name="login" value="Log in" style="color: white;background-color: rgba(7,80,208, 0.8); width: 100%; margin-top: 5rem;">Log in</button>
+								</p>
+								<hr>
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto; margin-top: 5rem;">
+									<a href="/connect/facebook" class="btn" style="background-color: #3B5998;color: white; width: 100%">
+										<i class="fa fa-facebook fa-fw"></i> Login with Facebook
+									</a>
+								</p>
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto;">
+									<a href="/connect/google" class="btn" style="background-color: #dd4b39;color: white; width: 100%">
+										<i class="fa fa-google fa-fw"></i> Login with Google
+									</a>
+								</p>
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto;">
+									<a href="#" class="btn" style="background-color: #55ACEE;color: white; width: 100%">
+										<i class="fa fa-twitter fa-fw"></i> Login with Twitter
+									</a>
+								</p>
+								<p class="form-row" style="width: 45%; margin: auto; margin-top: 3rem;">
+									<span>Don't have an account? 
+									Sign up <a href="/register" style="color: grey;">here</a></span>
+								</p>
+							</div>
+						</form>
+					</div>
+  				</div>
+        	</div>
+		</div>
+	</main>
 {% endblock %}

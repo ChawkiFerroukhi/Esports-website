@@ -1,0 +1,61 @@
+{% extends "base-front.html.twig" %}
+ {% block content %}
+
+     <div class="header-space"></div>      <div class="page-top-block type-archive" style="">
+     <div class="container">
+         <div class="heading-block">
+             <h1 class="h h3">Events: </h1>
+         </div>
+     </div>
+ </div>
+
+     <main class="main-container">
+         <div class="container">
+             <h3>Random Esports Facts</h3>
+             <p id="cat-fact">Click the button below to view a random Esports fact!</p>
+             <button id="show-fact" class="btn btn-dark">Show a new fact</button>
+             <br>
+
+             {% for event in events %}
+             <div class="matches-block">
+                 <div class="match-item event-box istp-item category-cs-go">
+                     <div class="wrap">
+                         <div class="content">
+                             <div class="heading">
+                                 <a class="link" href="{{  path('event_details',{'id' : event.id,'id_user':app.user.id}) }}">{{ event.id }}&#8211; {{ event.nom }}</a>
+                             </div>
+                             <div class="date">{{ event.date | date }}</div>
+                         </div>
+                     </div>
+                     <!--<div class="links">
+                      <a href="#" class="stream-link twitch" target="_blank"><i class="base-icon-twitch"></i><span>twitch stream</span></a>
+                     </div> -->
+                 </div>
+                 {% endfor %}
+             </div>
+         </div>
+     </main>
+     <script>
+         var factPlaceholder = document.getElementById("cat-fact");
+         var showFact = document.getElementById("show-fact");
+
+         /* Facts from this API: https://fact.birb.pw/api/v1/cat */
+
+         var CatFacts = ["As of this year, global esports gaming revenue will soar to $3.5 billion.",
+             "Almost any game where players compete can be an esports game.",
+             "Esports players are a lot like traditional athletes.",
+             "The US legally recognizes esports pros as professional athletes.",
+             "Fortnite and DOTA Championships cash prize pools top $30 million dollars."]
+
+         var factNumber;
+
+         function randomFact(){
+             return CatFacts[factNumber];
+         }
+
+         showFact.addEventListener('click', function(){
+             factNumber = Math.floor(Math.random()*5);
+             factPlaceholder.textContent = randomFact();
+         });
+     </script>
+ {% endblock %}

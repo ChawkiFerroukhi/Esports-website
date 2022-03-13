@@ -1,0 +1,68 @@
+{% extends 'base-front.html.twig' %}
+{% block content %}
+<div class="header-space"></div>
+<div class="page-top-block type-" style="">
+<div class="container">
+</div>
+</div>
+<main class="main-container">
+    <div class="container">
+        <div id="post-22" class="post-22 page type-page status-publish hentry">
+            <div class="content-area clearfix">
+                <div class="vc_row wpb_row vc_row-fluid vc_row-620c25c6a3d91">
+                    <div class="wpb_column vc_column_container vc_col-sm-12 vc_column_container-620c25c6a417b">
+                        <div class="vc_column-inner ">
+                            <div class="wpb_wrapper">
+                                <div class="blog-block filter-block blog-5df871567405c">
+                                    <div class="blog-items row isotope blog-grid load-wrap" data-rows="1">
+                                        <div class="grid-sizer col-1"></div>
+                                        {% for blog in blogs %}
+                                            <article class="blog-item category-gs-go  col-12 col-md-4 istp-item">
+                                                <div class="wrap">
+                                                    <div class="img">
+                                                        <a href="{{ path('blog_show', {'id': blog.id}) }}" style="background-image: url({{ asset('front-office/img/') }}{{ blog.image }})"></a>
+                                                    </div>
+                                                    <div class="date">
+                                                        {{ blog.postDate ? blog.postDate| ago }}
+                                                                                                                    
+                                                    </div>
+                                                    <h6 class="title">
+                                                        <a href="{{ path('blog_show', {'id': blog.id}) }}">
+                                                            {{ blog.titre }}
+                                                                                                                            
+                                                        </a>
+                                                    </h6>
+                                                    <div class="button">
+                                                        <a class="button-style2" href="{{ path('blog_show', {'id': blog.id}) }}">
+                                                            <span>
+                                                                Read More
+                                                                                                                                    
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="loadmore-button-block tac">
+                                        <a class="loadmore-button button-style2" data-type="grid" data-action="blog" data-array="[{&quot;id&quot;:480,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:481,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:482,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:483,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:484,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:485,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:486,&quot;cat&quot;:[&quot;gs-go&quot;]},{&quot;id&quot;:490,&quot;cat&quot;:[&quot;dota-2&quot;]},{&quot;id&quot;:491,&quot;cat&quot;:[&quot;pubg&quot;]},{&quot;id&quot;:492,&quot;cat&quot;:[&quot;fortnite&quot;]},{&quot;id&quot;:493,&quot;cat&quot;:[&quot;gs-go&quot;]},{&quot;id&quot;:494,&quot;cat&quot;:[&quot;dota-2&quot;]},{&quot;id&quot;:1473,&quot;cat&quot;:[&quot;pubg&quot;]}] " data-count="9" data-atts="{&quot;uniqid&quot;:&quot;5df871567405c&quot;,&quot;count_items&quot;:&quot;9&quot;,&quot;type&quot;:&quot;grid&quot;,&quot;grid_style&quot;:&quot;style1&quot;,&quot;cols&quot;:&quot;xs:1,md:3&quot;,&quot;rows&quot;:&quot;1&quot;,&quot;navigation_arrows&quot;:&quot;on&quot;,&quot;filter_buttons&quot;:&quot;on&quot;,&quot;filter_buttons_align&quot;:&quot;tal&quot;,&quot;navigation&quot;:&quot;load_more&quot;,&quot;short_description_size&quot;:&quot;&quot;,&quot;date_format&quot;:&quot;F j, Y&quot;,&quot;css_animation&quot;:&quot;&quot;,&quot;show_featured_image&quot;:&quot;on&quot;,&quot;show_heading&quot;:&quot;on&quot;,&quot;show_date&quot;:&quot;on&quot;,&quot;show_read_more&quot;:&quot;on&quot;,&quot;orderby&quot;:&quot;post__in&quot;,&quot;order&quot;:&quot;ASC&quot;,&quot;source&quot;:&quot;&quot;,&quot;items&quot;:&quot;&quot;,&quot;categories&quot;:&quot;&quot;,&quot;css&quot;:&quot;&quot;}" data-magic-cursor="link">
+                                            <span>
+                                                Load More
+                                                                                                        
+                                            </span>
+                                            <span class="load-dots">
+                                                <em></em>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}FAQ
+{% endblock %}
+
+{% block content %}
+	<a href="javascript:;"></a>
+	<div class="page-top-block type-">
+		<div class="container">
+			<div class="heading-block">
+				<h1 class="h h3">Frequently Asked Questions</h1>
+			</div>
+		</div>
+	</div>
+	<main class="main-container">
+		<div class="container">
+			<div id="post-1910" class="post-1910 page type-page status-publish hentry">
+				<div class="content-area clearfix">
+
+					<main class="main-container">
+						<div class="container">
+							<div id="post-1910" class="post-1910 page type-page status-publish hentry">
+                            {% for cat in categ %}
+                             <h3> {{ cat.name }} </h3>
+								{% for faq in faqs %}
+                                    {% if faq.category == cat %}
+									<div class="content-area clearfix">
+										<div class="vc_row wpb_row vc_row-fluid vc_row-620c25dd999da">
+											<div class="wpb_column vc_column_container  vc_column_container-5dd3d7339f939">
+												<div class="vc_column-inner ">
+													<div class="wpb_wrapper">
+														<div class="accordion-block accordion-block-620c25dd99e00">
+															<div class="accordion-item accordion-item-5dd3d711c37c3 current">
+																<div class="top">{{ faq.question}}
+																</div>
+																<div class="wrap" style="display: block;">{{faq.answer}}</div>
+															</div>
+                                                            {% endif %}
+														{% endfor %}
+															{% endfor %}
+																&nbsp;
+
+
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</main>
+				{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <div id="formControls" class="mb-5">
+        <div class="card">
+            <div class="card-body pb-2">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="exampleFormControlInput1">Ajouter un Evenement</label>
+                            {{ form_start(form) }}
+                            {{ form_row(form.Nom, {'attr': {'class': 'form-control','placeholder': 'Nom'}}) }}
+                            {{ form_row(form.Organisateur, {'attr': {'class': 'form-control','placeholder': 'Organisateur'}}) }}
+                            {{ form_row(form.Description, {'attr': {'class': 'form-control','placeholder': 'Description'}}) }}
+                            {{ form_row(form.Date, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_row(form.File, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

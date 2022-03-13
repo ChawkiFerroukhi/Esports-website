@@ -1,0 +1,93 @@
+
+
+{% extends 'base-dashboard.html.twig' %}
+
+{% block title %}Answer Reclamation{% endblock %}
+
+{% block content %}
+<div id="general" class="mb-5">
+                        <h4>
+                            <i class="far fa-user fa-fw text-theme"></i>
+                            Answer Reclamation
+                        </h4>
+                       
+                        <div class="card">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex align-items-center">
+                                    <div class="flex-1 text-break">
+                                        <form class="form-group row m-3">
+                                            <label  class="col-sm-2 col-form-label">
+                                            Sujet                               
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input class="form-control" value="{{ reclamation.sujet }}">
+                                            </div>
+                                             <label  class="col-sm-2 col-form-label mb-4">
+                                                Category        
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input  class="form-control" value="{{ reclamation.category }}">
+                                            </div>
+                                            <label  class="col-sm-2 col-form-label mb-4">
+                                                Email                                             
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input  class="form-control" value="{{ reclamation.email }}">
+                                            </div>
+            
+                                            <label  class="col-sm-2 col-form-label mb-4">
+                                                Description                                              
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                               <input type="text" class="form-control" value="{{ reclamation.description }}">
+                                            </div>
+                                            <label class="col-sm-2 col-form-label mb-4">
+                                                User        
+                                            </label>
+                                             <div class="col-sm-10 mb-4">
+                                               <input  type="text" class="form-control" value="{{ reclamation.user.username }}">
+                                            </div>
+                                            <input type="hidden" id="reclamation__token" name="reclamation[_token]" value="{{ form._token.vars.value }}" />
+                                            <h2> Reply to reclamation </h2>
+                                        </form>
+
+                                        <form method="post" name="faq" class="form-group row m-3">
+                                            <label for="faq_question" id ="test" class="col-sm-2 col-form-label">
+                                            Question                               
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="faq_question" name="faq[question]" class="form-control" value="{{ reclamation.sujet }}">
+                                            </div>
+                                            <input id="faq_category" name="faq[category]" class="form-control" value="{{ reclamation.category.id }}" type="hidden">
+                                            <label for="faq_answer" class="col-sm-2 col-form-label mb-4">
+                                                Answer                                             
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="faq_answer" name="faq[answer]"  class="form-control" >
+                                            </div>
+            
+                                           
+                                            <input type="hidden" id="faq__token" name="faq[_token]" value="{{ form._token.vars.value }}" />
+                                            <div>
+                                            
+                                                <button class="btn btn-outline-default w-100px">
+                                                    Post                                              
+                                                </button>
+                                                <a href="{{ path('reclamation_index') }}" class="btn btn-outline-default w-100px">
+                                                    Cancel                                                
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-arrow">
+                                                            <div class="card-arrow-top-left"></div>
+                                                            <div class="card-arrow-top-right"></div>
+                                                            <div class="card-arrow-bottom-left"></div>
+                                                            <div class="card-arrow-bottom-right"></div>
+                                                        </div>
+                        </div>
+                        
+                    </div>
+{% endblock %}

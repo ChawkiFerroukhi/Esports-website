@@ -1,0 +1,75 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}FAQ
+{% endblock %}
+
+{% block content %}
+	<a href="javascript:;"></a>
+	<div class="page-top-block type-">
+		<div class="container">
+			<div class="heading-block">
+				<h1 class="h h3">Frequently Asked Questions</h1>
+			</div>
+		</div>
+	</div>
+	<main class="main-container">
+		<div class="container">
+			<div id="post-1910" class="post-1910 page type-page status-publish hentry">
+				<div class="content-area clearfix">
+
+					<main class="main-container">
+						<div class="container">
+							<div id="post-1910" class="post-1910 page type-page status-publish hentry">
+								<h2>{{reclamation.category}}</h2>
+								<h6>Before reporting, check for your answer below</h6>
+
+								{% for faq in faqs %}
+									<div class="content-area clearfix">
+										<div class="vc_row wpb_row vc_row-fluid vc_row-620c25dd999da">
+											<div class="wpb_column vc_column_container  vc_column_container-5dd3d7339f939">
+												<div class="vc_column-inner ">
+													<div class="wpb_wrapper">
+														<div class="accordion-block accordion-block-620c25dd99e00">
+															<div class="accordion-item accordion-item-5dd3d711c37c3 current">
+																<div class="top">{{ faq.question}}
+																</div>
+																<div class="wrap" style="display: block;">{{faq.answer}}</div>
+															</div>
+														{% endfor %}
+														<div class=" wpb_row vc_row-fluid vc_row-620c25de08dae">
+
+															<form id="reclamation_form" onkeyup="success()" class="woocommerce-form woocommerce-form-login login" name="reclamation" method="post">
+																<input type="hidden" class="woocommerce-Input woocommerce-Input--text input-text" name="reclamation[sujet]" id="reclamation_sujet" value="{{ app.session.get('rec_sujet') }}"/>
+																<div style="visibility: hidden">
+																	{{form_widget(form.category)}}</div>
+																<input type="hidden" class="woocommerce-Input woocommerce-Input--text input-text" name="reclamation[email]" id="reclamation_email" value="{{ app.user.email }}"/>
+																<input type="hidden" class="woocommerce-Input woocommerce-Input--text input-text" name="reclamation[user]" id="reclamation_user" value="{{ app.user.id }}"/>
+																<input type="hidden" class="woocommerce-Input woocommerce-Input--text input-text" name="reclamation[description]" id="reclamation_description" value="{{ app.session.get('rec_description') }}"/>
+																<input type="hidden" id="reclamation__token" name="reclamation[_token]" value="{{ form._token.vars.value }}">
+                                <div class="vc_row wpb_row vc_row-fluid vc_row-620c25de08dae">
+																	<a class="button-style1" href="/home" target="_self" data-magic-cursor="link-small">
+																		<i class="base-icon-left-arrow"></i>
+																		<span>Cancel</span>
+																	</a>
+                                  <spaceBetween>
+																	<button type="submit" class="button-style1" id="submit_reclamation" name="save" value="" data-magic-cursor="link-small">
+																		<i class="base-icon-right-arrow"></i>
+																		<span>Report anyway</span>
+																	</button>
+																</div>
+																&nbsp;
+
+
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</main>
+				{% endblock %}

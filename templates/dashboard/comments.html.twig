@@ -1,0 +1,76 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <table id="datatableDefault" class="table text-nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Blog
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            User
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Content
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Post date
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Actions  
+                                                                                  
+                                                        
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for commentaire in commentaires %}
+                        <tr>
+                            <td>
+                                {{ commentaire.id }}
+                            </td>
+                            <td>
+                                {{ commentaire.blog.titre }}
+                            </td>
+                            <td>
+                                {{ commentaire.user.nom }}
+                            </td>
+                            <td>
+                                {{ commentaire.contenu }}
+                            </td>
+                            <td>
+                                {{ commentaire.date ? commentaire.date|date('Y-m-d H:i:s') : '' }}
+                            </td>
+                            <td>
+                                <a href="{{ path('commentaire_edit', {'id': commentaire.id}) }}" class="bi bi-pencil white"></a>
+                                {{ include('commentaire/_delete_form.html.twig') }}
+                            </a>
+                            </td>
+                        </tr>
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+    
+    <div class="card">
+        <div class="card-body">
+            <table id="" class="">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Nom
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Organisateur
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Description
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            image
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            date
+                                                                                        
+                                                        
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in events %}
+                         <tr  class="table-danger">
+                            <td>
+                                {{ event.id }}
+                            </td>
+                            <td>
+                                {{ event.nom }}
+                            </td>
+                            <td>
+                                {{ event.organisateur }}
+                            </td>
+                            <td>
+                                {{ event.description }}
+                            </td>
+                            <td>
+                                <img style="width:5%; height: 5%;" src="{{ asset('front-office/images/')~event.image }}"/>
+                            </td>
+                            <td>
+                                {{ event.date ? event.date|date('Y-m-d') : ''}}
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>           
+        </div>
+    </div>
+{% endblock %}

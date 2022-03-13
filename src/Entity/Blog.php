@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
+
 use App\Repository\BlogRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BlogRepository::class)
@@ -40,18 +43,19 @@ class Blog
     private $postDate;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $likes;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="Blog")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="blog")
      */
     private $commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Bloglikes::class, mappedBy="blog")
+     */
+    private $likes;
 
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -87,6 +91,10 @@ class Blog
     {
         return $this->image;
     }
+    public function __toString()
+    {
+        return (string) $this->getImage();
+    }
 
     public function setImage(?string $image): self
     {
@@ -103,18 +111,6 @@ class Blog
     public function setPostDate(\DateTimeInterface $postDate): self
     {
         $this->postDate = $postDate;
-
-        return $this;
-    }
-
-    public function getLikes(): ?int
-    {
-        return $this->likes;
-    }
-
-    public function setLikes(int $likes): self
-    {
-        $this->likes = $likes;
 
         return $this;
     }
@@ -147,5 +143,50 @@ class Blog
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Bloglikes>
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Bloglikes $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setBlog($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Bloglikes $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getBlog() === $this) {
+                $like->setBlog(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Check if blog is liked by user
+     * 
+     * @param \App\Entity\User $user
+     * @return boolean
+     */
+    public function isLikedByUser(User $user) : bool {
+        foreach ($this->likes as $like) {
+            if ($like->getUser() === $user) return true;
+        }
+
+        return false;
+
     }
 }

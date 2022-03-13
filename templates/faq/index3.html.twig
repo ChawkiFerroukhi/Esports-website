@@ -1,0 +1,69 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+    <div class="card">
+   
+        <div class="card-body">
+       
+            <table id="datatableDefault" class="table text-nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Question
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Answer
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Category
+                                                                                        
+                                                        
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for faq in faqs %}
+                        <tr>
+                            <td>
+                                {{ faq.id }}
+                            </td>
+                            <td>
+                                {{ faq.question }}
+                            </td>
+                            <td>
+                                {{ faq.answer }}
+                            </td>
+                            <td>
+                                {{ faq.category }}
+                            </td>
+                           
+                            <td>
+                                 <a href="{{ path('app_faq_edit', {'id' : faq.id }) }}" class="bi bi-pencil white"></a>
+                               
+                                {{ include('faq/_delete_form.html.twig') }}
+                                 
+
+                            </a>
+                            </td>
+                        </tr>                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>
+        </div>
+    </div>
+{% endblock %}

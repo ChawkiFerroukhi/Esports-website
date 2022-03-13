@@ -1,0 +1,36 @@
+{% extends "base-front.html.twig" %}
+{% block title %}Login{% endblock %}
+ {% block content %} 
+    <div class="header-space"></div>          
+	<div class="page-top-block" style="margin-bottom: 0px;">
+        <div class="container">
+        </div>
+    </div>
+    <main class="main-container" style="background-image: url({{ asset('front-office/img/img84.jpg') }}); background-size: cover;">
+      <div class="container">
+        <div id="post-11" class="post-11 page type-page status-publish hentry">
+  			<div class="content-area clearfix">
+    			<div class="woocommerce" style="width: 60%; margin: auto;">
+					<div class="woocommerce-notices-wrapper">
+						<form class="woocommerce-form woocommerce-form-login login" name="reset_password_request_form" method="post" style="background-color: rgba(0, 0, 0, 0.3); border-color: grey;">
+							<div class="content-area clearfix">
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 50%; margin: auto;">
+								</p>
+								<p class="woocommerce-form-row input-row woocommerce-form-row--wide form-row form-row-wide" style="width: 80%; margin: auto;">
+                                If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.
+                                This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+                            </p>
+	
+								</p>		
+								<p class="form-row" style="width: 80%; margin: auto; margin-bottom: 3rem;">  
+                                    If you don't receive an email please check your spam folder or try again.     
+                            <a type="submit" href="{{ path('app_forgot_password_request') }}" class="btn" name="passwordreset" value="Reset password" style="color: white;background-color: rgba(7,80,208, 0.8); width: 50%; margin-top: 4rem;margin-left: 7rem;">Resend email</a>
+								</p>
+							</div>
+						</form>
+					</div>
+  				</div>
+        	</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\MessageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
+ * 
  */
 class Message
 {
@@ -19,11 +20,14 @@ class Message
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotNull(
+     *  message = "Please write something"
+     * ) 
      */
-    private $content;
+    private $contenu;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $seen;
 
@@ -33,28 +37,30 @@ class Message
     private $date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $id_sender;
+    private $sender;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $id_reciever;
+    private $receiver;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getContent(): ?string
+    public function getContenu(): ?string
     {
-        return $this->content;
+        return $this->contenu;
     }
 
-    public function setContent(string $content): self
+    public function setContenu(string $contenu): self
     {
-        $this->content = $content;
+        $this->contenu = $contenu;
 
         return $this;
     }
@@ -64,7 +70,7 @@ class Message
         return $this->seen;
     }
 
-    public function setSeen(bool $seen): self
+    public function setSeen(?bool $seen): self
     {
         $this->seen = $seen;
 
@@ -83,26 +89,26 @@ class Message
         return $this;
     }
 
-    public function getIdSender(): ?int
+    public function getSender(): ?User
     {
-        return $this->id_sender;
+        return $this->sender;
     }
 
-    public function setIdSender(int $id_sender): self
+    public function setSender(?User $sender): self
     {
-        $this->id_sender = $id_sender;
+        $this->sender = $sender;
 
         return $this;
     }
 
-    public function getIdReciever(): ?int
+    public function getReceiver(): ?User
     {
-        return $this->id_reciever;
+        return $this->receiver;
     }
 
-    public function setIdReciever(int $id_reciever): self
+    public function setReceiver(?User $receiver): self
     {
-        $this->id_reciever = $id_reciever;
+        $this->receiver = $receiver;
 
         return $this;
     }

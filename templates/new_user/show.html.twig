@@ -1,154 +1,353 @@
 {% extends "base-back.html.twig" %}
 {% block title %}
     Profile
+                    
+                
+            
         
     
 {% endblock %}
 {% block content %}
-    <div class="row gx-4">
-        <div class="col-xl-8">
-            <div class="tab-content p-0">
-
-                <div class="tab-pane fade show active" id="profile-post">
-                    <div class="card mb-3">
-                        <div class="card-body">
-
-                            <div class="d-flex align-items-center mb-3">
-                                <a href="#" class="text-decoration-none">
-                                    <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="50" class="rounded-circle" />
-                                </a>
-                                <div class="flex-fill ps-2">
-                                    <div class="fw-bold">
-                                        <a href="#" class="text-decoration-none">
-                                            Yasine Romdhane                                              
+    <div id="app" class="app-sidebar-collapsed">
+        <div id="content" class="app-content" style="padding: 5rem 0 0 0;">
+            <div class="card">
+                <div class="card-body bg-theme border-theme bg-opacity-20 bg-black">
+                    <div class="profile">
+                        <div class="profile-container">
+                            <div class="profile-sidebar">
+                                <div class="desktop-sticky-top">
+                                    <div class="profile-img">
+                                        <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" />
+                                    </div>
+                                    {% if user.id == app.user.id %}
+                                        <a href="{{ path('new_user_edit', {'id': user.id}) }}" type="button" class="btn btn-outline-default" style="margin-left: 50px;">
+                                            Edit Profile                                           
+                                                                                                                                                                
+                                                                                                                                
+                                                                                    
                                         </a>
+                                    {% else %}
+                                        <a href="#" type="button" class="btn btn-outline-default" style="margin-left: 45px;">
+                                            Add friend                                      
+                                                                                                                                                        
+                                                                                                                                
+                                                                                    
+                                        </a>
+                                    {% endif %}
+                                    <h4 class="mt-5">
+                                        {{ user.nom }}
+                                        {{ user.prenom }}
+                                    </h4>
+                                    <div class="mb-3 text-white text-opacity-50 fw-bold mt-n2">
+                                        @
+                                                                                                                                                                                                        
+                                                                                                                                                        
+                                                                                                                        
+                                                                                
+                                        {{ user.username }}
                                     </div>
-                                    <div class="small text-white text-opacity-50">
-                                        March 4
-                                         
+                                    <p>
+                                        Principal UXUI Design & Brand Architecture for HUD. Creator of SeanTheme.
+                                                                                                                                                                                                                                                                                                Bringing the world closer together. Studied Computer Science and Psychology at Harvard University.
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                    
+                                                                                                                                                    
+                                                                                                                    
+                                                                            
+                                    </p>
+                                    <div class="mb-1">
+                                        <i class="fa fa-map-marker-alt fa-fw text-white text-opacity-50"></i>
+                                        New York, NY
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                    
+                                                                                                                                                    
+                                                                                                                    
+                                                                            
                                     </div>
+                                    <div class="mb-1">
+                                        <i class="fa fa-link fa-fw text-white text-opacity-50"></i>
+                                        seantheme.com/hud
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                    
+                                                                                                                                                    
+                                                                                                                    
+                                                                            
+                                    </div>
+                                    <div class="mb-1">
+                                        <i class="fa fa-link fa-fw text-white text-opacity-50"></i>
+                                        {{ user.email }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <i class="fa fa-link fa-fw text-white text-opacity-50"></i>
+                                        {{ user.dateJoin ? user.dateJoin|date('Y-m-d H:i:s') : '' }}
+                                    </div>
+                                    {% if user.id == app.user.id %}
+                                        <hr class="mt-4 mb-4" />
+                                        <div class="fw-bold mb-3 fs-16px">
+                                            Suggestions                             
+                                                                                                                                
+                                                                                    
+                                        </div>
+                                        {% for user in users %}
+                                            <div class="d-flex align-items-center mb-3">
+                                                <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="30" class="rounded-circle" />
+                                                <div class="flex-fill px-3">
+                                                    <a href="{{ path('new_user_show', {'id': user.id}) }}" style="color:white;">
+                                                        <div class="fw-bold text-truncate w-100px">
+                                                            {{ user.username }}
+                                                        </div>
+                                                    </a>
+                                                    <div class="fs-12px text-white text-opacity-50">
+                                                        
+                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                
+                                                                                                                                                                        
+                                                                                                            
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn btn-sm btn-outline-theme fs-11px">
+                                                    Add friend
+                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                
+                                                                                                                                                            
+                                                                                                    
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
-
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.                                    
-                                <br/>
-                                Quisque sodales urna justo, ac ultrices magna consectetur id.                                  
-                                <br/>
-                                <br/>
-                                Donec tempor ligula sit amet nunc porta, sed aliquam leo sagittis.                                 
-                                <br/>
-                                Ut auctor congue efficitur. Praesent aliquam pulvinar neque, placerat semper massa elementum et.                                
-                            </p>
-                            <hr class="mb-1" />
-
-                            <div class="row text-center fw-bold">
-                                <div class="col">
-                                    <a href="#" class="text-white text-opacity-50 text-decoration-none d-block p-2">
-                                        <i class="far fa-thumbs-up me-1 d-block d-sm-inline"></i>
-                                        Likes                                         
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="text-white text-opacity-50 text-decoration-none d-block p-2">
-                                        <i class="far fa-comment me-1 d-block d-sm-inline"></i>
-                                        Comment                                            
-                                    </a>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="text-white text-opacity-50 text-decoration-none d-block p-2">
-                                        <i class="fa fa-share me-1 d-block d-sm-inline"></i>
-                                        Share                                           
-                                    </a>
-                                </div>
-                            </div>
-                            <hr class="mb-3 mt-1" />
-                            <div class="d-flex align-items-center">
-                                <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="35" class="rounded-circle" />
-                                <div class="flex-fill ps-2">
-                                    <div class="position-relative d-flex align-items-center">
-                                        <input type="text" class="form-control rounded-pill bg-white bg-opacity-15" style="padding-right: 120px;" placeholder="Write a comment..." />
-                                        <div class="position-absolute end-0 text-center">
-                                            <a href="#" class="text-white text-opacity-50 me-2">
-                                                <i class="fa fa-smile"></i>
-                                            </a>
-                                            <a href="#" class="text-white text-opacity-50 me-2">
-                                                <i class="fa fa-camera"></i>
-                                            </a>
-                                            <a href="#" class="text-white text-opacity-50 me-2">
-                                                <i class="fa fa-video"></i>
-                                            </a>
-                                            <a href="#" class="text-white text-opacity-50 me-3">
-                                                <i class="fa fa-paw"></i>
-                                            </a>
+                            <div class="profile-content">
+                                <ul class="profile-tab nav nav-tabs nav-tabs-v2">
+                                    <li class="nav-item">
+                                        <a href="#profile-followers" class="nav-link" data-bs-toggle="tab">
+                                            <div class="nav-field">
+                                                Posts
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                    
+                                                                                                                                            
+                                                                                            
+                                            </div>
+                                            <div class="nav-value">
+                                                {{ user.user | length }}
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                    
+                                                                                                                                            
+                                                                                            
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#profile-followers" class="nav-link" data-bs-toggle="tab">
+                                            <div class="nav-field">
+                                                Friends
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                    
+                                                                                                                                            
+                                                                                            
+                                            </div>
+                                            <div class="nav-value">
+                                                0
+                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                    
+                                                                                                                                            
+                                                                                            
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="profile-content-container">
+                                    <div class="row gx-4">
+                                        <div class="col-xl-8">
+                                            <div class="tab-content p-0">
+                                                <div class="tab-pane fade show active" id="profile-post">
+                                                    <div class="card mb-3">
+                                                        <div class="card-body">
+                                                            <div class="d-flex align-items-center mb-3">
+                                                                <a href="#" class="text-decoration-none">
+                                                                    <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="50" class="rounded-circle" />
+                                                                </a>
+                                                                <div class="flex-fill ps-2">
+                                                                    <div class="fw-bold">
+                                                                        <a href="#" class="text-decoration-none">
+                                                                            {{ user.username }}
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="small text-white text-opacity-50">
+                                                                        March 4
+                                                                                                                                                                                                                 
+                                                                                                                                                                                                            
+                                                                                                                                            
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <form id="test" name="profile_posts" method="post" action="{{ path('new_user_show', {'id': app.user.id}) }}">
+                                                                <label for="profile_posts_content" class="col-sm-2 col-form-label">
+                                                                    Content 
+                                                                                                                                    
+                                                                </label>
+                                                                <div class="col-sm-10 mb-4">
+                                                                    <textarea id="profile_posts_content" name="profile_posts[content]" class="form-control"></textarea>
+                                                                </div>
+                                                                <label for="profile_posts_image" class="col-sm-2 col-form-label">
+                                                                    Attachement 
+                                                                                                                                    
+                                                                </label>
+                                                                <div class="col-sm-10 mb-4">
+                                                                    <input type="file" id="profile_posts_image" name="profile_posts[image]" class="form-control"></textarea>
+                                                                </div>
+                                                                <input type="hidden" id="profile_posts__token" name="profile_posts[_token]" value="{{ form._token.vars.value }}">
+                                                                    <div>
+                                                                        <button class="btn btn-outline-default" style="width: 100%; margin: auto;">
+                                                                            Publish Post                                                
+                                                                                                                                                    
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="card-arrow">
+                                                                <div class="card-arrow-top-left"></div>
+                                                                <div class="card-arrow-top-right"></div>
+                                                                <div class="card-arrow-bottom-left"></div>
+                                                                <div class="card-arrow-bottom-right"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4">
+                                                <div class="desktop-sticky-top d-none d-lg-block">
+                                                    <div class="card mb-3">
+                                                        <div class="list-group list-group-flush">
+                                                            <div class="list-group-item fw-bold px-3 d-flex">
+                                                                <span class="flex-fill">
+                                                                    Trends for you                                   
+                                                                                                                                                                                        
+                                                                                                                                
+                                                                </span>
+                                                                <a href="#" class="text-white text-opacity-50">
+                                                                    <i class="fa fa-cog"></i>
+                                                                </a>
+                                                            </div>
+                                                            <div class="list-group-item px-3">
+                                                                <div class="text-white text-opacity-50">
+                                                                    <small>
+                                                                        <strong>
+                                                                            Coming soon                                           
+                                                                                                                                                                                                                
+                                                                                                                                                
+                                                                        </strong>
+                                                                    </small>
+                                                                </div>
+                                                                <div class="fw-bold mb-2">
+                                                                    Coming soon                                   
+                                                                                                                                                                                        
+                                                                                                                                
+                                                                </div>
+                                                                <a href="#" class="card mb-1 text-white text-decoration-none">
+                                                                    <div class="card-body">
+                                                                        <div class="row no-gutters">
+                                                                            <div class="col-md-8">
+                                                                                <div class="fs-12px text-white text-opacity-50 mt-n1">
+                                                                                    Coming soon                                                   
+                                                                                                                                                                                                                                        
+                                                                                                                                                                
+                                                                                </div>
+                                                                                <div class="h-40px fs-13px overflow-hidden mb-n1">
+                                                                                    Coming soon                                                   
+                                                                                                                                                                                                                                        
+                                                                                                                                                                
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="card-arrow">
+                                                                        <div class="card-arrow-top-left"></div>
+                                                                        <div class="card-arrow-top-right"></div>
+                                                                        <div class="card-arrow-bottom-left"></div>
+                                                                        <div class="card-arrow-bottom-right"></div>
+                                                                    </div>
+                                                                </a>
+                                                                <div>
+                                                                    <small class="text-white text-opacity-50">
+                                                                        821k share                                       
+                                                                                                                                                                                                    
+                                                                                                                                        
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                            <a href="#" class="list-group-item list-group-action text-center">
+                                                                Show more                              
+                                                                                                                                                                            
+                                                                                                                        
+                                                            </a>
+                                                        </div>
+                                                        <div class="card-arrow">
+                                                            <div class="card-arrow-top-left"></div>
+                                                            <div class="card-arrow-top-right"></div>
+                                                            <div class="card-arrow-bottom-left"></div>
+                                                            <div class="card-arrow-bottom-right"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% for profilepost in profileposts %}
+                                                <div class="col-xl-8" id="testing">
+                                                    <div class="tab-content p-0" style="vertical-align: top;">
+                                                        <div class="tab-pane fade show active" id="profile-post1">
+                                                            <div class="card mb-3">
+                                                                <div class="card-body">
+                                                                    <div class="d-flex align-items-center mb-3">
+                                                                        <a href="#" class="text-decoration-none">
+                                                                            <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="50" class="rounded-circle" />
+                                                                        </a>
+                                                                        <div class="flex-fill ps-2">
+                                                                            <div class="fw-bold">
+                                                                                <a href="#" class="text-decoration-none">
+                                                                                    test
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="small text-white text-opacity-50">
+                                                                                March 4
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <p id="test2">
+                                                                        {{ profilepost.content }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-arrow">
-                            <div class="card-arrow-top-left"></div>
-                            <div class="card-arrow-top-right"></div>
-                            <div class="card-arrow-bottom-left"></div>
-                            <div class="card-arrow-bottom-right"></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-xl-4">
-            <div class="desktop-sticky-top d-none d-lg-block">
-                <div class="card mb-3">
-                    <div class="list-group list-group-flush">
-                        <div class="list-group-item fw-bold px-3 d-flex">
-                            <span class="flex-fill">
-                                Trends for you                                   
-                            </span>
-                            <a href="#" class="text-white text-opacity-50">
-                                <i class="fa fa-cog"></i>
-                            </a>
-                        </div>
-                        <div class="list-group-item px-3">
-                            <div class="text-white text-opacity-50">
-                                <small>
-                                    <strong>
-                                        Coming soon                                           
-                                    </strong>
-                                </small>
-                            </div>
-                            <div class="fw-bold mb-2">
-                                Coming soon                                   
-                            </div>
-                            <a href="#" class="card mb-1 text-white text-decoration-none">
-                                <div class="card-body">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-8">
-                                            <div class="fs-12px text-white text-opacity-50 mt-n1">
-                                                Coming soon                                                   
-                                            </div>
-                                            <div class="h-40px fs-13px overflow-hidden mb-n1">
-                                                Coming soon                                                   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-arrow">
-                                    <div class="card-arrow-top-left"></div>
-                                    <div class="card-arrow-top-right"></div>
-                                    <div class="card-arrow-bottom-left"></div>
-                                    <div class="card-arrow-bottom-right"></div>
-                                </div>
-                            </a>
-                            <div>
-                                <small class="text-white text-opacity-50">
-                                    821k share                                       
-                                </small>
-                            </div>
-                        </div>
-                        <a href="#" class="list-group-item list-group-action text-center">
-                            Show more                              
-                        </a>
                     </div>
                     <div class="card-arrow">
                         <div class="card-arrow-top-left"></div>
@@ -158,7 +357,35 @@
                     </div>
                 </div>
             </div>
+            <a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade">
+                <i class="fa fa-arrow-up"></i>
+            </a>
         </div>
-    </div>
+    {% endblock %}
+    {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
 
-{% endblock %}
+        $(document).ready(function () {
+            $("#test").submit(function (event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('new_user_show', {'id': app.user.id}) }}",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+                }).done(function (response) {
+                    $("#testing").prepend('<div class="tab-content p-0" style="vertical-align: top; "><div class="tab-pane fade show active" id="profile-post1"><div class="card mb-3"><div class="card-body"><div class="d-flex align-items-center mb-3"><a href="#" class="text-decoration-none"><img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="50" class="rounded-circle" /></a><div class="flex-fill ps-2"><div class="fw-bold"><a href="#" class="text-decoration-none">test</a></div><div class="small text-white text-opacity-50"> March 4</div></div></div><p id ="test2">'+$('#profile_posts_content').val()+'</p><hr class="mb-1" /><div class="row text-center fw-bold"><div class="col"><a href="#" class="text-white text-opacity-50 text-decoration-none d-block p-2"><i class="far fa-thumbs-up me-1 d-block d-sm-inline"></i>Likes</a></div><div class="col"><a href="#" class="text-white text-opacity-50 text-decoration-none d-block p-2"><i class="far fa-comment me-1 d-block d-sm-inline"></i>Comment</a></div><div class="col"><a href="#" class="text-white text-opacity-50 text-decoration-none d-block p-2"><i class="fa fa-share me-1 d-block d-sm-inline"></i>Share</a></div></div><hr class="mb-3 mt-1" /><div class="d-flex align-items-center"><img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="35" class="rounded-circle" /><div class="flex-fill ps-2"><div class="position-relative d-flex align-items-center"><input type="text" class="form-control rounded-pill bg-white bg-opacity-15" style="padding-right: 120px;" placeholder="Write a comment..." /><div class="position-absolute end-0 text-center"><a href="#" class="text-white text-opacity-50 me-2"><i class="fa fa-smile"></i></a><a href="#" class="text-white text-opacity-50 me-2"><i class="fa fa-camera"></i></a><a href="#" class="text-white text-opacity-50 me-2"><i class="fa fa-video"></i></a><a href="#" class="text-white text-opacity-50 me-3"><i class="fa fa-paw"></i></a></div></div></div></div></div><div class="card-arrow"><div class="card-arrow-top-left"></div><div class="card-arrow-top-right"></div><div class="card-arrow-bottom-left"></div><div class="card-arrow-bottom-right"></div></div></div></div></div></div>');
+                    $("#test")[0].reset();
+                    console.log(response);
+                });
+
+            
+            });
+        });
+    </script>
+    {% endblock %}
+    

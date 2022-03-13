@@ -2,153 +2,320 @@
 
 {% block content %}
 
-    <div id="general" class="mb-5">
-        <h4>
-            <i class="far fa-user fa-fw text-theme"></i>
-            General
-        </h4>
-        <p>
-            View and update your general account information and settings.
-        </p>
-        <div class="card">
-            <div class="list-group list-group-flush">
-                <div class="list-group-item d-flex align-items-center">
-                    <div class="flex-1 text-break">
-                        <form name="user" method="post" id="user" class="form-group row m-3">
-                            <label for="user_email" id ="test" class="col-sm-2 col-form-label">
-                            email                               
-                            </label>
-                            <div class="col-sm-10 mb-4">
-                                <input id="user_email" name="user[email]" type="email" class="form-control" value="{{ app.user.email }}">
+<div id="app" class="app-sidebar-collapsed">
+<div id="content" class="app-content" style="padding: 5rem 0 0 0;">
+
+    <div class="card">
+        <div class="card-body bg-theme border-theme bg-opacity-20 bg-black">
+            <div class="profile">
+                <div class="profile-container">
+                    <div class="profile--sidebar">
+                        <div class="desktop-sticky-top">
+                            <div class="profile-img">
+                                <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" />
                             </div>
-                            <label for="user_username" class="col-sm-2 col-form-label mb-4">
-                                Username                                  
-                            </label>
-                            <div class="col-sm-10 mb-4">
-                                <input id="user_username" name="user[username]" type="text" class="form-control" value="{{ app.user.username }}">
+                            {% if user.id == app.user.id  %}
+                            <a href="{{ path('new_user_edit', {'id': user.id}) }}" type="button" class="btn btn-outline-default" style="margin-left: 50px;">
+                                Edit Profile                                           
+                            </a>
+                            {% endif %}
+                            <h4 class="mt-5">
+                                {{ user.nom }}
+                                {{ user.prenom }}
+                            </h4>
+                            <div class="mb-3 text-white text-opacity-50 fw-bold mt-n2">
+                                @
+                                                                                
+                                {{ user.username }}
                             </div>
-                            <label for="user_prenom" class="col-sm-2 col-form-label mb-4">
-                                Name                                             
-                            </label>
-                            <div class="col-sm-10 mb-4">
-                                <input id="user_prenom" name="user[prenom]" type="text" class="form-control" value="{{ app.user.prenom }}">
+                            <p>
+                                Principal UXUI Design & Brand Architecture for HUD. Creator of SeanTheme.
+                                                                                                                                                                        Bringing the world closer together. Studied Computer Science and Psychology at Harvard University.
+                                                                                                                                                                        
+                                                                                                                                                                    
+                                                                                                                    
+                                                                            
+                            </p>
+                            <div class="mb-1">
+                                <i class="fa fa-map-marker-alt fa-fw text-white text-opacity-50"></i>
+                                New York, NY
+                                                                                                                                                                        
+                                                                                                                                                                    
+                                                                                                                    
+                                                                            
                             </div>
-                            <label for="user_nom" class="col-sm-2 col-form-label mb-4">
-                                Lastname                                
-                            </label>
-                            <div class="col-sm-10 mb-4">
-                                <input id="user_nom" name="user[nom]" type="text" class="form-control" value="{{ app.user.nom }}">
+                            <div class="mb-1">
+                                <i class="fa fa-link fa-fw text-white text-opacity-50"></i>
+                                seantheme.com/hud
+                                                                                                                                                                        
+                                                                                                                      
+                                                                                                                    
+                                                                            
                             </div>
-                            <label for="user_password" class="col-sm-2 col-form-label mb-4">
-                                Password                                              
-                            </label>
-                            <div class="col-sm-10 mb-4">
-                                <input id="user_password" name="user[password]" type="password" class="form-control" value="*****">
+                            <div class="mb-1">
+                                <i class="fa fa-link fa-fw text-white text-opacity-50"></i>
+                                {{ app.user.email }}
                             </div>
-                            <label for="user_phone" class="col-sm-2 col-form-label mb-4">
-                                Phone number         
-                            </label>
-                            <div class="col-sm-10 mb-4">
-                                <input id="user_phone" name="user[phone]" type="number" class="form-control" value="{{ app.user.phone }}">
+                            <div class="mb-3">
+                                <i class="fa fa-link fa-fw text-white text-opacity-50"></i>
+                                {{ app.user.dateJoin ? app.user.dateJoin|date('Y-m-d H:i:s') : '' }}
                             </div>
-                            <input type="hidden" id="user__token" name="user[_token]" value="{{ form._token.vars.value }}" />
-                            <div>
-                                <button class="btn btn-outline-default w-100px">
-                                    Save                                                
-                                </button>
+                            {% if user.id == app.user.id  %}
+                            <hr class="mt-4 mb-4" />
+                            <div class="fw-bold mb-3 fs-16px">
+                                People to follow
+                                                                                                                                                                    
+                                                                                                                    
+                                                                            
                             </div>
-                        </form>
+                            
+                            {% for user in users %}
+                            
+                            <div class="d-flex align-items-center mb-3">
+                            
+                                <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="30" class="rounded-circle" />
+                                <div class="flex-fill px-3">
+                                <a href="{{path('new_user_show', {'id': user.id}) }}" style="color: white;">
+                                    <div class="fw-bold text-truncate w-100px">
+                                        {{ user.username }}
+                                                                                                                                                                                                    
+                                                                                                                                            
+                                                                                            
+                                    </div>
+                                </a>
+                                    <div class="fs-12px text-white text-opacity-50">
+                                        3.1m followers
+                                                                                                                                                                                                    
+                                                                                                                                            
+                                                                                            
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-theme fs-11px">
+                                    Follow
+                                                                                                                                                                                    
+                                                                                                                                
+                                                                                    
+                                
+                                </a>
+                            </div>
+                            
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="profile-content">
+                        <ul class="profile-tab nav nav-tabs nav-tabs-v2">
+                            <li class="nav-item">
+                                <a href="#profile-followers" class="nav-link" data-bs-toggle="tab">
+                                    <div class="nav-field">
+                                        Followers
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                
+                                                                                                                                                
+                                                                                        
+                                    </div>
+                                    <div class="nav-value">
+                                        1.3m
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                
+                                                                                                                                                
+                                                                                        
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#profile-followers" class="nav-link" data-bs-toggle="tab">
+                                    <div class="nav-field">
+                                        Following
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                
+                                                                                                                                                
+                                                                                        
+                                    </div>
+                                    <div class="nav-value">
+                                        2,592
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                
+                                                                                                                                                
+                                                                                        
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        {% if app.user.id == user.id %}
+                        <div class="profile-content-container">
+                        <div id="general" class="mb-5">
+                        <h4>
+                            <i class="far fa-user fa-fw text-theme"></i>
+                            General
+                        </h4>
+                        <p>
+                            View and update your general account information and settings.
+                        </p>
+                        <div class="card">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex align-items-center">
+                                    <div class="flex-1 text-break">
+                                        <form name="user" method="post" id="user" class="form-group row m-3">
+                                            <label for="user_email" id ="test" class="col-sm-2 col-form-label">
+                                            email                               
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_email" name="user[email]" type="email" class="form-control" value="{{ app.user.email }}">
+                                            </div>
+                                            <label for="user_username" class="col-sm-2 col-form-label mb-4">
+                                                Username                                  
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_username" name="user[username]" type="text" class="form-control" value="{{ app.user.username }}">
+                                            </div>
+                                            <label for="user_prenom" class="col-sm-2 col-form-label mb-4">
+                                                Name                                             
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_prenom" name="user[prenom]" type="text" class="form-control" value="{{ app.user.prenom }}">
+                                            </div>
+                                            <label for="user_nom" class="col-sm-2 col-form-label mb-4">
+                                                Lastname                                
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_nom" name="user[nom]" type="text" class="form-control" value="{{ app.user.nom }}">
+                                            </div>
+                                            <label for="user_password" class="col-sm-2 col-form-label mb-4">
+                                                Password                                              
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_password" name="user[password]" type="password" class="form-control" value="*****">
+                                            </div>
+                                            <label for="user_phone" class="col-sm-2 col-form-label mb-4">
+                                                Phone number         
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="user_phone" name="user[phone]" type="number" class="form-control" value="{{ app.user.phone }}">
+                                            </div>
+                                            <input type="hidden" id="user__token" name="user[_token]" value="{{ form._token.vars.value }}" />
+                                            <div>
+                                                <button class="btn btn-outline-default w-100px">
+                                                    Save                                                
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-arrow">
+                                                            <div class="card-arrow-top-left"></div>
+                                                            <div class="card-arrow-top-right"></div>
+                                                            <div class="card-arrow-bottom-left"></div>
+                                                            <div class="card-arrow-bottom-right"></div>
+                                                        </div>
+                        </div>
+                        
+                    </div>
+                                                <div id="languages" class="mb-5">
+                                                    <h4>
+                                                        <i class="fa fa-language fa-fw text-theme"></i>
+                                                        Languages                                  
+                                                    </h4>
+                                                    <p>
+                                                        Language font support and auto translation enabled                                  
+                                                    </p>
+                                                    <div class="card">
+                                                        <div class="list-group list-group-flush">
+                                                            <div class="list-group-item d-flex align-items-center">
+                                                                <div class="flex-1 text-break">
+                                                                    <div>
+                                                                        Language enabled                                                 
+                                                                    </div>
+                                                                    <div class="text-white text-opacity-50">
+                                                                        English (default), Chinese, France, Portuguese, Japense                                                             
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="#modalEdit" data-bs-toggle="modal" class="btn btn-outline-default w-100px">
+                                                                        Edit                                               
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="list-group-item d-flex align-items-center">
+                                                                <div class="flex-1 text-break">
+                                                                    <div>
+                                                                        Auto translation                                                 
+                                                                    </div>
+                                                                    <div class="text-white text-opacity-50 d-flex align-items-center">
+                                                                        <i class="fa fa-circle fs-8px fa-fw text-success me-1"></i>
+                                                                        Enabled                                                  
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="#modalEdit" data-bs-toggle="modal" class="btn btn-outline-default w-100px">
+                                                                        Edit                                                 
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-arrow">
+                                                            <div class="card-arrow-top-left"></div>
+                                                            <div class="card-arrow-top-right"></div>
+                                                            <div class="card-arrow-bottom-left"></div>
+                                                            <div class="card-arrow-bottom-right"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <div id="resetSettings" class="mb-5">
+                                                    <h4>
+                                                        <i class="fa fa-redo fa-fw text-theme"></i>
+                                                        Reset settings                                
+                                                    </h4>
+                                                    <p>
+                                                        Reset all website setting to factory default setting.                                
+                                                    </p>
+                                                    <div class="card">
+                                                        <div class="list-group list-group-flush">
+                                                            <div class="list-group-item d-flex align-items-center">
+                                                                <div class="flex-1 text-break">
+                                                                    <div>
+                                                                        Reset Settings                                                   
+                                                                    </div>
+                                                                    <div class="text-white text-opacity-50">
+                                                                        This action will clear and reset all the current website setting.                                                  
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="#" class="btn btn-outline-default w-100px">
+                                                                        Reset                                        
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-arrow">
+                                                            <div class="card-arrow-top-left"></div>
+                                                            <div class="card-arrow-top-right"></div>
+                                                            <div class="card-arrow-bottom-left"></div>
+                                                            <div class="card-arrow-bottom-right"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                                        {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>
+        </div>
     </div>
-                                <div id="languages" class="mb-5">
-                                    <h4>
-                                        <i class="fa fa-language fa-fw text-theme"></i>
-                                        Languages                                  
-                                    </h4>
-                                    <p>
-                                        Language font support and auto translation enabled                                  
-                                    </p>
-                                    <div class="card">
-                                        <div class="list-group list-group-flush">
-                                            <div class="list-group-item d-flex align-items-center">
-                                                <div class="flex-1 text-break">
-                                                    <div>
-                                                        Language enabled                                                 
-                                                    </div>
-                                                    <div class="text-white text-opacity-50">
-                                                        English (default), Chinese, France, Portuguese, Japense                                                             
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <a href="#modalEdit" data-bs-toggle="modal" class="btn btn-outline-default w-100px">
-                                                        Edit                                               
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="list-group-item d-flex align-items-center">
-                                                <div class="flex-1 text-break">
-                                                    <div>
-                                                        Auto translation                                                 
-                                                    </div>
-                                                    <div class="text-white text-opacity-50 d-flex align-items-center">
-                                                        <i class="fa fa-circle fs-8px fa-fw text-success me-1"></i>
-                                                        Enabled                                                  
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <a href="#modalEdit" data-bs-toggle="modal" class="btn btn-outline-default w-100px">
-                                                        Edit                                                 
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-arrow">
-                                            <div class="card-arrow-top-left"></div>
-                                            <div class="card-arrow-top-right"></div>
-                                            <div class="card-arrow-bottom-left"></div>
-                                            <div class="card-arrow-bottom-right"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="resetSettings" class="mb-5">
-                                    <h4>
-                                        <i class="fa fa-redo fa-fw text-theme"></i>
-                                        Reset settings                                
-                                    </h4>
-                                    <p>
-                                        Reset all website setting to factory default setting.                                
-                                    </p>
-                                    <div class="card">
-                                        <div class="list-group list-group-flush">
-                                            <div class="list-group-item d-flex align-items-center">
-                                                <div class="flex-1 text-break">
-                                                    <div>
-                                                        Reset Settings                                                   
-                                                    </div>
-                                                    <div class="text-white text-opacity-50">
-                                                        This action will clear and reset all the current website setting.                                                  
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <a href="#" class="btn btn-outline-default w-100px">
-                                                        Reset                                        
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-arrow">
-                                            <div class="card-arrow-top-left"></div>
-                                            <div class="card-arrow-top-right"></div>
-                                            <div class="card-arrow-bottom-left"></div>
-                                            <div class="card-arrow-bottom-right"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+</div>
+<a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade">
+    <i class="fa fa-arrow-up"></i>
+</a>
+</div>
                         {% endblock %}
                         

@@ -5,10 +5,16 @@ namespace App\Entity;
 use App\Repository\EquipeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=EquipeRepository::class)
+  * @ORM\Entity(repositoryClass=EquipeRepository::class)
+  * @UniqueEntity(
+  * fields={"nom"},
+  * errorPath="nom",
+  * message="This name already exists try another name."
+  *)
  */
 class Equipe
 {
@@ -60,6 +66,10 @@ class Equipe
     {
         return $this->nom;
     }
+
+    // public function __toString() {
+    //     return (String) $this -> getNom();
+    // }
 
     public function setNom(string $nom): self
     {
@@ -169,6 +179,11 @@ class Equipe
         $this->classement = $classement;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getEvenements();
     }
 
 }

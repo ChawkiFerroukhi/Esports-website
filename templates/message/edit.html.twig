@@ -1,0 +1,58 @@
+{% extends 'base-dashboard.html.twig' %}
+
+
+{% block title %}Edit Message{% endblock %}
+
+
+{% block content %}
+<div id="general" class="mb-5">
+                        <h4>
+                            <i class="far fa-user fa-fw text-theme"></i>
+                            Edit Message
+                        </h4>
+                       
+                        <div class="card">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex align-items-center">
+                                    <div class="flex-1 text-break">
+                                        <form method="post" class="form-group row m-3">
+                                            <label for="message_contenu" id ="test" class="col-sm-2 col-form-label">
+                                            Content                               
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="message_contenu" name="message[contenu]" type="text" class="form-control"  value="{{ message.contenu }}">
+                                            </div>
+                                            
+                                            <label for="message_receiver" class="col-sm-2 col-form-label mb-4">
+                                                Receiver        
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <select id="message_receiver" name="message[receiver]" class="form-select">
+                                                {% for user in users %}
+                                                    <option value ="{{user.id}}"> {{user.username}} </option>
+                                                {% endfor %}
+                                                </select>
+                                            </div>
+                                            <input type="hidden" id="message__token" name="message[_token]" value="{{ form._token.vars.value }}" />
+                                            <div>
+                                                <button class="btn btn-outline-default w-100px">
+                                                    Save                                                
+                                                </button>
+                                                <a href="{{ path('app_message_dashboard') }}" class="btn btn-outline-default w-100px">
+                                                    Cancel                                                
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-arrow">
+                                                            <div class="card-arrow-top-left"></div>
+                                                            <div class="card-arrow-top-right"></div>
+                                                            <div class="card-arrow-bottom-left"></div>
+                                                            <div class="card-arrow-bottom-right"></div>
+                                                        </div>
+                        </div>
+                        
+                    </div>
+{% endblock %}

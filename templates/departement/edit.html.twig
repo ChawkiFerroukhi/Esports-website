@@ -1,11 +1,55 @@
-{% block title %}Edit Departement{% endblock %}
+{% extends "base-dashboard.html.twig" %}
+{% block title %}Edit User{% endblock %}
 
-{% block body %}
-    <h1>Edit Departement</h1>
+{% block content %}
+<div id="general" class="mb-5">
+                        <h4>
+                            <i class="far fa-user fa-fw text-theme"></i>
+                            Edit Department
+                        </h4>
+                        <p>
+                            View and update {{ departement.nom }} information and settings.
+                        </p>
+                        <div class="card">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex align-items-center">
+                                    <div class="flex-1 text-break">
+                                        <form name="departement" method="post" class="form-group row m-3">
+                                            <label for="departement_nom" class="col-sm-2 col-form-label mb-4">
+                                                Name                                  
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="departement_nom" name="departement[nom]" type="text" class="form-control" value="{{ departement.nom }}">
+                                            </div>
+                                            <label for="departement_description" class="col-sm-2 col-form-label mb-4">
+                                                Description                                             
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="departement_description" name="departement[description]" type="text" class="form-control" value="{{ departement.description }}">
+                                            </div>
+                                            <input type="hidden" id="departement__token" name="departement[_token]" value="{{ form._token.vars.value }}" />
+                                            <div>
+                                                <button class="btn btn-outline-default w-100px">
+                                                    Save                                                
+                                                </button>
+                                                <a href=" {{ path('departement_index') }}" class="btn btn-outline-default w-100px">
+                                                    Cancel                                                
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-arrow">
+                                                            <div class="card-arrow-top-left"></div>
+                                                            <div class="card-arrow-top-right"></div>
+                                                            <div class="card-arrow-bottom-left"></div>
+                                                            <div class="card-arrow-bottom-right"></div>
+                                                        </div>
+                        </div>
+                        
+                    </div>
 
-    {{ include('departement/_form.html.twig', {'button_label': 'Update'}) }}
+                <a href="{{ path('departement_index') }}">back to list</a>
 
-    <a href="{{ path('departement_index') }}">back to list</a>
-
-    {{ include('departement/_delete_form.html.twig') }}
 {% endblock %}

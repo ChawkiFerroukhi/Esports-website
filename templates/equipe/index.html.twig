@@ -1,0 +1,62 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+
+        <div class="card">
+            <div class="card-body">
+                <table id="table" class="table text-nowrap w-100">
+                    <thead>
+                        <tr>
+                            <th>
+                                id
+                                                            
+                            </th>
+                            <th>
+                                Team name
+                                                            
+                            </th>
+                            <th>
+                                Actions
+                                                            
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for equipe in equipes %}
+                        <tr>
+                            <td>{{ equipe.id }}</td>
+                            <td>{{ equipe.nom }}</td>
+                            <td>
+                                <a href="{{ path('equipe_edit', {'id': equipe.id}) }}" class="bi bi-pencil white"></a>
+                                {{ include('equipe/_delete_form.html.twig') }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-arrow">
+                <div class="card-arrow-top-left"></div>
+                <div class="card-arrow-top-right"></div>
+                <div class="card-arrow-bottom-left"></div>
+                <div class="card-arrow-bottom-right"></div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-outline-theme mt-4" style="float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add Team
+    </button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        Add Team
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                {{ include('equipe/_form.html.twig', {'button_label': 'Add'}) }}
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

@@ -1,6 +1,19 @@
 {% extends "base-front.html.twig" %}
 {% block title %}Home{% endblock %}
  {% block content %}
+ <script>
+            var botmanWidget = {
+            bubbleAvatarUrl: '{{ asset('front-office/images/bot.png') }}',
+            frameEndpoint: '{{ path("chatframe") }}',
+            chatServer: '{{ path("message") }}',
+            introMessage: 'Hello, I am ChatBot. Say "Help" to see what I can do :) ',
+            title: 'ChatBot', 
+            mainColor: '#000000',
+            bubbleBackground: '#000000',
+            aboutText: ''
+        };
+</script>
+<script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
   <div class="header-space"></div>      <main class="main-container">
   <div class="container">
 
@@ -25,7 +38,7 @@
            <div class="banner-item banner-item-5de8ad22213fb tal">
 
 
-            <div class="bg-overlay">                        <div class="image" style="background-image: url({{ asset('front-office/img/bg.jpg') }})"></div>
+            <div class="bg-overlay">                        <div class="image" style="background-image: url({{ asset('front-office/img/img22.jpg') }})"></div>
             </div>        <div class="container">
              <div class="row full-height" style="">
               <div class="col-auto">
@@ -44,7 +57,7 @@
            <div class="banner-item banner-item-5dedee51a2bb4 tal">
 
 
-            <div class="bg-overlay">                        <div class="image" style="background-image: url({{ asset('front-office/img/img22.jpg')}})"></div>
+            <div class="bg-overlay">                        <div class="image" style="background-image: url({{ asset('front-office/img/bg.jpg')}})"></div>
             </div>        <div class="container">
              <div class="row full-height" style="">
               <div class="col-auto">

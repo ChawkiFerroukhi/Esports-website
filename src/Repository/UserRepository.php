@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -12,7 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method User[]    findAll()
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UserRepository extends ServiceEntityRepository
+class UserRepository extends ServiceEntityRepository implements UserLoaderInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -35,16 +36,36 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
-
-    /*
-    public function findOneBySomeField($value): ?User
+    public function loadUserByUsername($usernameOrEmail)
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
+            ->where('u.username = :query OR u.email = :query')
+            ->setParameter('query', $usernameOrEmail)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
-    */
+
+    /**
+     * @param $id
+     * @return User[]
+     */
+    public function findAllExceptThis($user)
+    {
+        return $this->createQueryBuilder('user')
+            ->andWhere('user.id != :id')
+            ->andWhere('user.roles != :roles')
+            ->setParameter('roles', '["ROLE_ADMIN"]')
+            ->setParameter('id', $user)
+            ->getQuery()
+            ->execute();
+    }
+
+    public function findAdmins($department)
+    {
+        return $this->createQueryBuilder('user')
+            ->andWhere('user.departement != :department')
+            ->setParameter('department', $department)
+            ->getQuery()
+            ->execute();
+    }
 }

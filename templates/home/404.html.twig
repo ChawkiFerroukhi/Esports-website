@@ -1,0 +1,27 @@
+{% extends "base-front.html.twig" %}
+{% block title %}404 - Page Not Found{% endblock %}
+ {% block content %}
+
+
+<div class="header-space"></div><section class="banner-area banner-404 bsl-left">
+        <div class="banner-item">
+            <div class="bg-overlay">
+                <div class="image" style="background-image: url({{ asset('front-office/img/img15.jpg') }});">
+                </div>
+            </div>
+            <div class="container">
+                <div class="row align-items-center full-height">
+                    <div class="col-12">
+                        <div class="heading-block with-decor-block">
+                            <div class="sub-h">#oooops</div>
+                            <div class="h h1">404 Error</div>
+                        </div>
+                        <div class="text">You are on a non existing page!</div>
+                        <a class="button-style1" href="/" target="_self" data-magic-cursor="link"><span>Get Back Home</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+ {% endblock %}

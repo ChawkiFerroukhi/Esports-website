@@ -1,0 +1,42 @@
+{% extends "base-dashboard-new.html.twig" %}
+{% block content %}
+
+    <div id="calendrier">
+    </div>
+    <script>
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek'
+                },
+                events: {{ data|raw }},
+                editable: true,
+                eventResizableFromStart: true
+            })
+
+            window.calendar = calendar;
+
+            calendar.on('eventChange', (e) => {
+                let url = `/edit_calendar/${e.event.id}`
+                let donnees = {
+                    "title": e.event.title,
+                    "start": e.event.start,
+                    "end": e.event.end,
+                    "allDay": e.event.allDay
+                }
+
+                let xhr = new XMLHttpRequest
+                xhr.open("PUT", url)
+                xhr.send(JSON.stringify(donnees))
+            })
+            //setTimeout(function(){ console.log("befor render"); calendar.render(); console.log("after render");}, 5000);
+            calendar.render();
+        }
+    </script>
+{% endblock %}

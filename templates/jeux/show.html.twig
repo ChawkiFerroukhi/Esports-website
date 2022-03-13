@@ -1,0 +1,28 @@
+{% extends 'base-dashboard.html.twig' %}
+
+{% block content %}
+    <h1>Jeux</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ jeux.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ jeux.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ jeux.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('jeux_index') }}">back to list</a>
+
+    <a href="{{ path('jeux_edit', {'id': jeux.id}) }}">edit</a>
+
+    {{ include('jeux/_delete_form.html.twig') }}
+{% endblock %}

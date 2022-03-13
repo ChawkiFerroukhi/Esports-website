@@ -1,0 +1,80 @@
+
+
+{% extends 'base-dashboard.html.twig' %}
+
+{% block title %}Edit Reclamation{% endblock %}
+
+{% block content %}
+<div id="general" class="mb-5">
+                        <h4>
+                            <i class="far fa-user fa-fw text-theme"></i>
+                            Edit Reclamation
+                        </h4>
+                       
+                        <div class="card">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex align-items-center">
+                                    <div class="flex-1 text-break">
+                                        <form method="post" class="form-group row m-3">
+                                            <label for="reclamation_sujet" id ="test" class="col-sm-2 col-form-label">
+                                            Sujet                               
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="reclamation_sujet" name="reclamation[sujet]" class="form-control" value="{{ reclamation.sujet }}">
+                                            </div>
+                                             <label for="reclamation_category" class="col-sm-2 col-form-label mb-4">
+                                                Category        
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <select id="reclamation_category" name="reclamation[category]" class="form-select">
+                                                {% for category in categorys %}
+                                                    <option value ="{{category.id}}"> {{category.name}} </option>
+                                                {% endfor %}
+                                                </select>
+                                            </div>
+                                            <label for="reclamation_email" class="col-sm-2 col-form-label mb-4">
+                                                Email                                             
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <input id="reclamation_email" name="reclamation[email]" type="email" class="form-control" value="{{ reclamation.email }}">
+                                            </div>
+            
+                                            <label for="reclamation_description" class="col-sm-2 col-form-label mb-4">
+                                                Description                                              
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                               <input id="reclamation_description" name="reclamation[description]" type="text" class="form-control" value="{{ reclamation.description }}">
+                                            </div>
+                                            <label for="reclamation_user" class="col-sm-2 col-form-label mb-4">
+                                                User        
+                                            </label>
+                                            <div class="col-sm-10 mb-4">
+                                                <select id="reclamation_user" name="reclamation[user]" class="form-select">
+                                                {% for user in users %}
+                                                    <option value ="{{user.id}}"> {{user.username}} </option>
+                                                {% endfor %}
+                                                </select>
+                                            </div> 
+                                            <input type="hidden" id="reclamation__token" name="reclamation[_token]" value="{{ form._token.vars.value }}" />
+                                            <div>
+                                                <button class="btn btn-outline-default w-100px">
+                                                    Save                                                
+                                                </button>
+                                                <a href="{{ path('reclamation_index') }}" class="btn btn-outline-default w-100px">
+                                                    Cancel                                                
+                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-arrow">
+                                                            <div class="card-arrow-top-left"></div>
+                                                            <div class="card-arrow-top-right"></div>
+                                                            <div class="card-arrow-bottom-left"></div>
+                                                            <div class="card-arrow-bottom-right"></div>
+                                                        </div>
+                        </div>
+                        
+                    </div>
+{% endblock %}

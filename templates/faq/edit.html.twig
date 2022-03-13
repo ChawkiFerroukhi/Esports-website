@@ -1,0 +1,13 @@
+{% extends 'base-dashboard.html.twig' %}
+
+{% block title %}Edit Faq{% endblock %}
+
+{% block content %}
+    <h1>Edit Faq</h1>
+
+    {{ include('faq/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+
+    {{ include('faq/_delete_form.html.twig') }}
+{% endblock %}

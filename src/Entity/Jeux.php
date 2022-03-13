@@ -34,9 +34,15 @@ class Jeux
      */
     private $equipes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="jeux_id")
+     */
+    private $reviews;
+
     public function __construct()
     {
         $this->equipes = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,6 +74,7 @@ class Jeux
         return $this;
     }
 
+   
     /**
      * @return Collection|Equipe[]
      */
@@ -75,6 +82,11 @@ class Jeux
     {
         return $this->equipes;
     }
+
+    public function __toString() {
+        return (String) $this -> getEquipes();
+    }
+
 
     public function addEquipe(Equipe $equipe): self
     {
@@ -90,6 +102,36 @@ class Jeux
     {
         if ($this->equipes->removeElement($equipe)) {
             $equipe->removeJeux($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Review>
+     */
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function addReview(Review $review): self
+    {
+        if (!$this->reviews->contains($review)) {
+            $this->reviews[] = $review;
+            $review->setJeuxId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Review $review): self
+    {
+        if ($this->reviews->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getJeuxId() === $this) {
+                $review->setJeuxId(null);
+            }
         }
 
         return $this;

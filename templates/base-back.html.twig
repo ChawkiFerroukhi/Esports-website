@@ -20,7 +20,7 @@
         {% endblock %}
     </head>
     {% block headerdefine %}
-        <body style="background-image: url({{ asset('front-office/img/bg1.jpg') }}); background-size: cover;">
+        <body style="background-image: url({{ asset('front-office/img/img80.jpg') }}); background-size: cover;">
         {% endblock %}
         {% block navbar %}
             <header class="site-header light-color">
@@ -29,8 +29,6 @@
                         <div class="logo-block col-auto">
                             <div class="site-logo">
                                 <a href="index.html" data-magic-cursor="link">
-                                    <img class="light" src="{{ asset('front-office/img/logo-light.png') }}" alt="LevelUp">
-                                    <img class="dark" src="{{ asset('front-office/img/logo-dark.png') }}" alt="LevelUp">
                                 </a>
                             </div>
                         </div>
@@ -46,9 +44,9 @@
                                         </a>
                                     </li>
                                     <li id="menu-item-53" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-53">
-                                        <a href="#">
+                                        <a href="{{ path('blogs') }}">
                                             <span>
-                                                Blog
+                                                Blogs
                                                                                             
                                             </span>
                                         </a>
@@ -64,7 +62,7 @@
                                     <li id="menu-item-54" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-54">
                                         <a href="#">
                                             <span>
-                                                Pages
+                                                Rankings
                                                                                             
                                             </span>
                                         </a>
@@ -98,7 +96,7 @@
                                     <li id="menu-item-47" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47">
                                         <a href="#">
                                             <span>
-                                                Contact Us
+                                                Report a problem
                                                                                             
                                             </span>
                                         </a>
@@ -161,249 +159,13 @@
                 </div>
             </header>
         {% endblock %}
-        <div id="app" class="app-sidebar-collapsed">
-            <div id="content" class="app-content" style="padding: 5rem 0 0 0;">
-                <div class="card">
-                    <div class="card-body bg-theme border-theme bg-opacity-20 bg-black">
-                        <div class="profile">
-                            <div class="profile-container">
-                                <div class="profile-sidebar">
-                                    <div class="desktop-sticky-top">
-                                        <div class="profile-img">
-                                            <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" />
-                                        </div>
-                                        <a href="{{ path('new_user_edit', {'id': app.user.id}) }}" type="button" class="btn btn-outline-default" style="margin-left: 50px;">
-                                            Edit Profile                                           
-                                        </a>
-                                        <h4 class="mt-5">
-                                            {{ app.user.nom }}
-                                            {{ app.user.prenom }}
-                                        </h4>
-                                        <div class="mb-3 text-white text-opacity-50 fw-bold mt-n2">
-                                            @
-                                                                                            
-                                            {{ app.user.username }}
-                                        </div>
-                                        <p>
-                                            Principal UXUI Design & Brand Architecture for HUD. Creator of SeanTheme.
-                                                                                                                                                                                    Bringing the world closer together. Studied Computer Science and Psychology at Harvard University.
-                                                                                                                                                                                    
-                                                                                                                                                                                
-                                                                                                                                
-                                                                                        
-                                        </p>
-                                        <div class="mb-1">
-                                            <i class="fa fa-map-marker-alt fa-fw text-white text-opacity-50"></i>
-                                            New York, NY
-                                                                                                                                                                                    
-                                                                                                                                                                                
-                                                                                                                                
-                                                                                        
-                                        </div>
-                                        <div class="mb-1">
-                                            <i class="fa fa-link fa-fw text-white text-opacity-50"></i>
-                                            seantheme.com/hud
-                                                                                                                                                                                    
-                                                                                                                                  
-                                                                                                                                
-                                                                                        
-                                        </div>
-                                        <div class="mb-1">
-                                            <i class="fa fa-link fa-fw text-white text-opacity-50"></i>
-                                            {{ app.user.email }}
-                                        </div>
-                                        <div class="mb-3">
-                                            <i class="fa fa-link fa-fw text-white text-opacity-50"></i>
-                                            {{ app.user.dateJoin ? app.user.dateJoin|date('Y-m-d H:i:s') : '' }}
-                                        </div>
-                                        <hr class="mt-4 mb-4" />
-                                        <div class="fw-bold mb-3 fs-16px">
-                                            People to follow
-                                                                                                                                                                                
-                                                                                                                                
-                                                                                        
-                                        </div>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="30" class="rounded-circle" />
-                                            <div class="flex-fill px-3">
-                                                <div class="fw-bold text-truncate w-100px">
-                                                    Noor Rowe
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                                <div class="fs-12px text-white text-opacity-50">
-                                                    3.1m followers
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                            </div>
-                                            <a href="#" class="btn btn-sm btn-outline-theme fs-11px">
-                                                Follow
-                                                                                                                                                                                                
-                                                                                                                                            
-                                                                                                
-                                            </a>
-                                        </div>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="30" class="rounded-circle" />
-                                            <div class="flex-fill px-3">
-                                                <div class="fw-bold text-truncate w-100px">
-                                                    Abbey Parker
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                                <div class="fs-12px text-white text-opacity-50">
-                                                    302k followers
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                            </div>
-                                            <a href="#" class="btn btn-sm btn-outline-theme fs-11px">
-                                                Follow
-                                                                                                                                                                                                
-                                                                                                                                            
-                                                                                                
-                                            </a>
-                                        </div>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="30" class="rounded-circle" />
-                                            <div class="flex-fill px-3">
-                                                <div class="fw-bold text-truncate w-100px">
-                                                    Savannah Nicholson
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                                <div class="fs-12px text-white text-opacity-50">
-                                                    720k followers
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                            </div>
-                                            <a href="#" class="btn btn-sm btn-outline-theme fs-11px">
-                                                Follow
-                                                                                                                                                                                                
-                                                                                                                                            
-                                                                                                
-                                            </a>
-                                        </div>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="30" class="rounded-circle" />
-                                            <div class="flex-fill px-3">
-                                                <div class="fw-bold text-truncate w-100px">
-                                                    Kenny Bright
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                                <div class="fs-12px text-white text-opacity-50">
-                                                    1.4m followers
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                            </div>
-                                            <a href="#" class="btn btn-sm btn-outline-theme fs-11px">
-                                                Follow
-                                                                                                                                                                                                
-                                                                                                                                            
-                                                                                                
-                                            </a>
-                                        </div>
-                                        <div class="d-flex align-items-center">
-                                            <img src="https://media.geeksforgeeks.org/auth/avatar.png" alt="" width="30" class="rounded-circle" />
-                                            <div class="flex-fill px-3">
-                                                <div class="fw-bold text-truncate w-100px">
-                                                    Cara Poole
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                                <div class="fs-12px text-white text-opacity-50">
-                                                    989k followers
-                                                                                                                                                                                                                
-                                                                                                                                                        
-                                                                                                        
-                                                </div>
-                                            </div>
-                                            <a href="#" class="btn btn-sm btn-outline-theme fs-11px">
-                                                Follow
-                                                                                                                                                                                                
-                                                                                                                                            
-                                                                                                
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="profile-content">
-                                    <ul class="profile-tab nav nav-tabs nav-tabs-v2">
-                                        <li class="nav-item">
-                                            <a href="#profile-followers" class="nav-link" data-bs-toggle="tab">
-                                                <div class="nav-field">
-                                                    Followers
-                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                                            
-                                                                                                                                                            
-                                                                                                    
-                                                </div>
-                                                <div class="nav-value">
-                                                    1.3m
-                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                                            
-                                                                                                                                                            
-                                                                                                    
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#profile-followers" class="nav-link" data-bs-toggle="tab">
-                                                <div class="nav-field">
-                                                    Following
-                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                                            
-                                                                                                                                                            
-                                                                                                    
-                                                </div>
-                                                <div class="nav-value">
-                                                    2,592
-                                                                                                                                                                                                                                                                    
-                                                                                                                                                                                                            
-                                                                                                                                                            
-                                                                                                    
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="profile-content-container">
-                                        {% block content %}{% endblock %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-arrow">
-                        <div class="card-arrow-top-left"></div>
-                        <div class="card-arrow-top-right"></div>
-                        <div class="card-arrow-bottom-left"></div>
-                        <div class="card-arrow-bottom-right"></div>
-                    </div>
-                </div>
-            </div>
-            <a href="#" data-toggle="scroll-to-top" class="btn-scroll-top fade">
-                <i class="fa fa-arrow-up"></i>
-            </a>
-        </div>
+        {% block content %} {% endblock %} {% block javascripts %} {% endblock %}
         <link href="{{ asset('back-office/css/app.min.css') }}" rel="stylesheet" />
         <script data-cfasync="false" src="{{ asset('back-office/js/email-decode.min.js') }}"></script>
         <script src="{{ asset('back-office/js/vendor.min.js') }}" type="16da9a1ef25df41644eb38cf-text/javascript"></script>
         <script src="{{ asset('back-office/js/app.min.js') }}" type="16da9a1ef25df41644eb38cf-text/javascript"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type="text/javascript">
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        {# <script type="text/javascript">
                         var request;
                         $("#user").submit(function(event){
                         
@@ -440,7 +202,7 @@
                             });
                         
                         });
-                        </script>
+                        </script> #}
     </body>
 <!-- Mirrored from seantheme.com/hud/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Feb 2022 22:43:13 GMT -->
 </html>

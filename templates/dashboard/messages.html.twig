@@ -1,0 +1,72 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+    <div class="card">
+   
+        <div class="card-body">
+       
+            <table id="datatableDefault" class="table text-nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Contenu
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Date
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Sender
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Actions  
+                                                                                  
+                                                        
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for message in messages %}
+                        <tr>
+                            <td>
+                                {{ message.id }}
+                            </td>
+                            <td>
+                                {{ message.contenu }}
+                            </td>
+                            <td>
+                                {{ message.date ? message.date|date('Y-m-d H:i:s') : '' }}
+                            </td>
+                            <td>
+                                {{ message.sender.nom }}
+                            </td>
+                            <td>
+                                 <a href="{{ path('app_message_edit', {'id' : message.id }) }}" class="bi bi-pencil white"></a>
+                                <a href="{{ path('app_message_reply', {'receiver' : message.sender.id }) }}" class="fas fa-reply white"></a>
+                                {{ include('message/_delete_form.html.twig') }}
+                                 <a href="{{ path('app_message_deleteall', {'receiver': message.sender.id}) }}" class=>Delete all</a>
+
+                            </a>
+                            </td>
+                        </tr>                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>
+        </div>
+    </div>
+{% endblock %}

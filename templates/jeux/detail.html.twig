@@ -1,0 +1,87 @@
+{% extends 'base-front.html.twig' %}
+
+{% block content %}
+<div class="header-space"></div>          <div class="page-top-block type-" style="">
+    <div class="container">
+        <div class="heading-block">
+            <h1 class="h h3">Game detail</h1>
+        </div>
+    </div>
+</div>
+<div class="bg-overlay">
+    <div class="circles style3"><span></span><span></span></div>
+</div>
+<div class="container">
+
+    <div class="woocommerce-notices-wrapper"></div><div id="product-1364" class="product type-product post-1364 status-publish first instock product_cat-accessories has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+
+        <div class="poduct-content-row row">
+            <div class="col-12 col-lg-6 vc_column_container">
+                <div class="product-image popup-gallery">
+                    <div class="item popup-item">
+                        <a href="../../wp-content/uploads/2019/12/img43.jpg" data-size="2500x1674" data-magic-cursor="link-w-text" style="background-image: url(../../wp-content/uploads/2019/12/img43-1024x686.jpg)"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary entry-summary col">
+                <h1 class="product_title entry-title h4">{{ jeu.nom }}</h1><div class="price-block">
+                </div>
+                <div class="woocommerce-product-details__short-description">
+                    <p>{{ jeu.description }}</p>
+                </div>
+
+
+            </div>
+
+            <div class="card-body">
+                <h4 class="card-title">Ajouter un avis </h4>
+                <p class="card-description">
+                </p>
+
+                {{ form_start(f) }}
+                <div class="forms-sample">
+
+
+
+                    <div class="form-group">
+                        {{ form_label(f.note, 'note', ) }}
+                        {{ form_widget(f.note, {'attr': {'class': 'form-control','placeholder': 'note'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(f.avis, 'avis', ) }}
+                        {{ form_widget(f.avis, {'attr': {'class': 'wpcf7-form-control-wrap f-name','placeholder': 'avis'}}) }}
+                    </div>
+
+
+
+
+
+
+
+                    <div class="input-group col-md-6">
+                        {{ form_widget(f.submit, {'attr': {'class': '"button-style1' }}) }}
+                        {{ form_widget(f.cancel, {'attr': {'class': 'btn btn-danger' }}) }}
+                    </div>
+                    {{ form_end(f) }}
+                    </form>
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+            </div>
+
+            {% endblock %}

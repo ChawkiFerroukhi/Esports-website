@@ -20,18 +20,46 @@ class Commande
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
+     * @ORM\Column(type="date")
      */
-    private $User;
+    private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="commande")
+     * @ORM\Column(type="integer")
      */
-    private $Produit;
+    private $quantite;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $prix_total;
+
+    /**
+     * @ORM\OneToMany(targetEntity=LigneCommande::class, mappedBy="Commande", cascade={"persist", "remove"})
+     */
+    private $ligneCommandes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status = self::STATUS_CART;
+
+    /**
+     * An order that is in progress, not placed yet.
+     *
+     * @var string
+     */
+    const STATUS_CART = 'cart';
 
     public function __construct()
     {
-        $this->Produit = new ArrayCollection();
+        $this->ligneCommandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -39,44 +67,92 @@ class Commande
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->User;
+        return $this->date;
     }
 
-    public function setUser(?User $User): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->User = $User;
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(int $quantite): self
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getPrixTotal(): ?float
+    {
+        return $this->prix_total;
+    }
+
+    public function setPrixTotal(float $prix_total): self
+    {
+        $this->prix_total = $prix_total;
 
         return $this;
     }
 
     /**
-     * @return Collection|Produit[]
+     * @return Collection<int, LigneCommande>
      */
-    public function getProduit(): Collection
+    public function getLigneCommandes(): Collection
     {
-        return $this->produit;
+        return $this->ligneCommandes;
     }
 
-    public function addProduit(Produit $produit): self
+    public function addLigneCommande(LigneCommande $ligneCommande): self
     {
-        if (!$this->produit->contains($produit)) {
-            $this->produit[] = $produit;
-            $produit->setCommande($this);
+        if (!$this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes[] = $ligneCommande;
+            $ligneCommande->setCommande($this);
         }
 
         return $this;
     }
 
-    public function removeProduit(Produit $produit): self
+    public function removeLigneCommande(LigneCommande $ligneCommande): self
     {
-        if ($this->Produit->removeElement($produit)) {
+        if ($this->ligneCommandes->removeElement($ligneCommande)) {
             // set the owning side to null (unless already changed)
-            if ($produit->getCommande() === $this) {
-                $produit->setCommande(null);
+            if ($ligneCommande->getCommande() === $this) {
+                $ligneCommande->setCommande(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

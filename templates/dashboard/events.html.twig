@@ -1,0 +1,113 @@
+{% extends "base-dashboard.html.twig" %}
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <table id="datatableDefault" class="table text-nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>
+                            id
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Name
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Organizer
+                                                                                        
+                                                        
+                        </th>
+                        <th>
+                            Actions
+                                                                                        
+                                                        
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for evenement in evenements %}
+                        <tr>
+                            <td>
+                                {{ evenement.id }}
+                            </td>
+
+                            <td>
+                                {{ evenement.nom }}
+                            </td>
+                            <td>
+                                {{ evenement.organisateur }}
+                            </td>
+                            <td>
+                                <a href="{{ path('evenement_edit', {'id': evenement.id}) }}" class="bi bi-pencil white"></a>
+                                {{ include('evenement/_delete_form.html.twig') }}
+                            </a>
+                            </td>
+                        </tr>
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-arrow">
+            <div class="card-arrow-top-left"></div>
+            <div class="card-arrow-top-right"></div>
+            <div class="card-arrow-bottom-left"></div>
+            <div class="card-arrow-bottom-right"></div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-theme mt-4" style="float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Add event
+    </button>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                        Add event
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form action="{{ path('evenement_new') }}" method="post">
+                    <label for="evenement_nom" class="col-sm-2 col-form-label">
+                        Title                               
+                    </label>
+                    <div class="col-sm-10 mb-4">
+                    <input id="evenement_nom" name="evenement[nom]" class="form-control">
+                    </div>
+                            <label for="evenement_organisateur" class="col-sm-2 col-form-label">
+                                Organizer                                  
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                            <input id="evenement_organisateur" name="evenement[organisateur]" type="text" class="form-control"></textarea>
+                            </div>
+                            <label for="evenement_equipes" class="col-sm-2 col-form-label">
+                                Teams        
+                            </label>
+                            <div class="col-sm-10 mb-4">
+                                <select id="evenement_equipes" name="evenement[equipes]" class="form-select">
+                                {% for equipe in equipes %}
+                                    <option value ="{{equipe.id}}"> {{equipe.nom}} </option>
+                                {% endfor %}
+                                </select>
+                            </div>
+                            <p class="form-row">
+                            <input type="hidden" id="evenement__token" name="evenement[_token]" value="{{ form._token.vars.value }}"> 
+                            </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    add
+                                </button>
+                            </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

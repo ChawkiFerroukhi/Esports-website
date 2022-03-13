@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Invoice</title>
+</head>
+<body>
+<h6>Invoice #{{ commande.id }}</h6>
+<p>Issued: {{ commande.date|date('Y-m-d-h-m') }}</p></br>
+{% for ligne in commande.ligneCommandes %}
+{% set i = 0 %}
+{% set i = ligne.produit.price * ligne.quantite %}
+{% endfor %}
+
+<h2>Dear {{ app.user.nom }} {{ app.user.prenom }}, Thank You For Shopping With LevelUp !</h2>
+<h4>This Email is a confirmation that you ordered a total of <b>{{ commande.getQuantite() }}</b> products priced at <b>{{ commande.getPrixTotal() }} TND</b> </h4>
+<h2>We hope to see you again soon {{ app.user.nom }} !</h2>
+</body>
+</html>

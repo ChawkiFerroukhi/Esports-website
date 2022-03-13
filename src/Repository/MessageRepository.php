@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Message;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +19,30 @@ class MessageRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Message::class);
+    }
+
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function add(Message $entity, bool $flush = true): void
+    {
+        $this->_em->persist($entity);
+        if ($flush) {
+            $this->_em->flush();
+        }
+    }
+
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function remove(Message $entity, bool $flush = true): void
+    {
+        $this->_em->remove($entity);
+        if ($flush) {
+            $this->_em->flush();
+        }
     }
 
     // /**
@@ -35,7 +61,7 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
     */
-
+   
     /*
     public function findOneBySomeField($value): ?Message
     {
@@ -47,4 +73,42 @@ class MessageRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function deleteAll($value){
+        return $this->createQueryBuilder('m')
+        ->delete()
+        ->Where('m.receiver = :val')
+        ->orWhere('m.sender = :val')
+        ->setParameter('val', $value)
+        ->getQuery()
+        ->getResult();
+    }
+  
+
+    public function findMessages($value){
+        return $this->createQueryBuilder('m')
+        ->Where('m.receiver = :val')
+        ->orWhere('m.sender = :val')
+        ->setParameter('val', $value)
+        ->orderBy('m.date', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
+
+    public function findAllWithoutAdmin(){
+        return $this->createQueryBuilder('m')
+        ->Where('m.sender != :val')
+        ->setParameter('val', 0)
+        ->orderBy('m.date', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
+
+    public function onlyAdminMessages(){
+        return $this->createQueryBuilder('m')
+        ->Where('m.sender = :val')
+        ->setParameter('val', 0)
+        ->orderBy('m.date', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
 }
